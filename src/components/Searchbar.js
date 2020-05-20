@@ -117,7 +117,8 @@ const Search = (props) => {
                 value={query}
                 onChange={(e) => handleOnChange(e)}
                 variant="outlined"
-                fullWidth
+                
+                style={{width:'70%'}}
                 /> */}
         </form>
        </Box> 

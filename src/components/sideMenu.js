@@ -114,20 +114,33 @@ const useStyles = makeStyles((theme: Theme) =>
     logo: {
       // marginRight: theme.spacing(4),
       maxHeight: "50px",
-      left: 'calc(50% - 311px)',
-            position:'relative',
-            marginTop:'10px',
+      // left: 'calc(50% - 311px)',
+      //       position:'relative',
+      //       marginTop:'10px',
+      right: '50px',
+      position:'relative',
+      top:'5px',
+      zIndex:9999999999,
       [theme.breakpoints.up("sm")]: {
         maxHeight: "60px",
-        right: '50px',
-        marginTop:'5px'
+        // right: '50px',
+        top:'0px',
       },
     },
-    sb: {
+    sb: {width:'100%',
       [theme.breakpoints.up("lg")]: {
         width: "500px",
       },
     },
+    moving:{
+      position:'fixed',
+      top:'5px',
+      left:0,
+      zIndex:1000000,
+      [theme.breakpoints.up("sm")]: {
+        position:'static'
+      },
+    }
   })
 );
 
@@ -183,8 +196,8 @@ function ResponsiveDrawer(props) {
                 
               >
                 <Grid item  container
-                sm={12}
-                 md={3} lg={4} p>
+                xs={12}
+                 sm={4} p>
                   {" "}
                    <span style={{ paddingTop: "10px",margin: 'auto',right: 0, position: 'fixed' }}>
                       <IconButton
@@ -205,33 +218,34 @@ function ResponsiveDrawer(props) {
                 </Grid>
                
                   
-                  <Grid wrap='nowrap' container item sm={8} md={9} lg={8}>
-                  <Grid item sm={10} md={9} lg={8} xs={9}>
+                  <Grid wrap='nowrap' container item xs={12}  sm={8}>
+                
 
                     <Search style={{ margin: "auto" }}
                       setFiltered={(p) => {
                         props.setFiltered(p);
                       }}
                       products={props.products}
+                      className={classes.sb}
                     />
-                    </Grid>
-                  <Grid item container wrap='nowrap' sm={2} xs={3} md={3} lg={3}>
+                    
+                  
                       
-                    <Link 
+                    <Link  className={classes.moving}
                      to="/cart">
                       {" "}
                       <IconButton aria-label="">
                         <CartBadge />
                       </IconButton>
                     </Link>
-                    <span
+                    <span  className={classes.moving} style={{left:'40px'}}
                      >
                     <Link style={{ paddingTop: "10px" }} to="/login">
                       <IconButton>
                         <AccountCircleIcon style={{ fill: "#DD766F" }} />
                       </IconButton>
                     </Link></span>
-                    </Grid> 
+                  
                      </Grid>
                      </Grid> 
             </Toolbar>
