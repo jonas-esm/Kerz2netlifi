@@ -4,6 +4,13 @@
 /node_modules
 /.pnp
 .pnp.js
+.package-lock.json
+.yarn.lock
+.yarn-error.log
+.node index.bat.lnk
+.database.rules.json
+/build
+.vscode
 
 # testing
 /coverage
