@@ -33,8 +33,6 @@ import {
 import Cart from "./pages/CartPge";
 import Home from "./pages/Home";
 import Home2 from "./pages/Home2";
-
-
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
 import Search from "./Searchbar";
@@ -346,13 +344,14 @@ const handleDrawerItemOpen =(e) => {
                   {/* {open ? <ExpandLess /> : <ExpandMore />} */}
                       </ListItem>
                       <Collapse in={ListItemOpen[0].open} timeout="auto" unmountOnExit>
-                        <List color='white' component="div" disablePadding>
+                        <List color='white' component="span" >
                     <ListItem>
-                      <ListItemText color="white">تيشيرت</ListItemText>
+                    <Link className="navlink" to="/cart" onClick={handleDrawerClose}>تيشيرت</Link>
                     </ListItem>  <ListItem>
-                      <ListItemText>قميص</ListItemText>
-                    </ListItem>  <ListItem>
-                      <ListItemText>بنطلون</ListItemText>
+                    <Link className="navlink" to="/cart" onClick={handleDrawerClose}>قميص</Link>
+                    </ListItem>  <ListItem button>
+                      {/* <ListItemText >بنطلون</ListItemText> */}
+                      <Link className="navlink" to="/cart" onClick={handleDrawerClose}> بنطلون </Link>
                     </ListItem>
                   </List>
                   </Collapse>
@@ -371,11 +370,11 @@ const handleDrawerItemOpen =(e) => {
                       <Collapse in={ListItemOpen[1].open} timeout="auto" unmountOnExit>
                         <List color='white'  disablePadding>
                     <ListItem>
-                      <ListItemText color={theme.palette.getContrastText}>تيشيرت</ListItemText>
+                    <Link className="navlink" to="/cart" onClick={handleDrawerClose}>تيشيرت</Link>
                     </ListItem>  <ListItem>
-                      <ListItemText>قميص</ListItemText>
+                    <Link className="navlink" to="/cart" onClick={handleDrawerClose}>قميص</Link>
                     </ListItem>  <ListItem>
-                      <ListItemText>بنطلون</ListItemText>
+                    <Link className="navlink" to="/cart" onClick={handleDrawerClose}>بنطلون</Link>
                     </ListItem>
                   </List>
                   </Collapse>
