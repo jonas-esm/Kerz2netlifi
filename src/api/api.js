@@ -2,8 +2,8 @@
 import axios from "axios";
 
 export async function fetchData(res) {
-  res = await axios("http://127.0.0.1:8000/products");
-  // res = await axios("https://kerz-sy-api.herokuapp.com/products");
+  // res = await axios("http://127.0.0.1:8000/products");
+  res = await axios("https://kerz-sy-api.herokuapp.com/products");
 
   return res;
 }

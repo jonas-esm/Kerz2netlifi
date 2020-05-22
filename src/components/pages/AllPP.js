@@ -5,6 +5,7 @@ import Product from "./prdetails";
 
 
 import {BrowserRouter as Router , Link , Route, Switch} from 'react-router-dom'
+import Loading2 from '../Asset/Loading2';
 
 export default function Allpp (props) {
     const [products, setProducts] = useState([
@@ -31,7 +32,7 @@ export default function Allpp (props) {
       // if(products.length <= 1)
       if(loading)
     return(
-            <div>Loading</div>
+      <div> <Loading2/></div>
         )
 return (
     //  <Router> <Switch>
