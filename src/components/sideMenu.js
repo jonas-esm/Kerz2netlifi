@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { AppBar, Toolbar, IconButton, Grid } from "@material-ui/core";
+import { AppBar, Toolbar, IconButton, Grid, Collapse, ListItemText } from "@material-ui/core";
 import FilteredProducts from "./pages/searching";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 // import Container from '@material-ui/core/Container';
@@ -32,6 +32,8 @@ import {
 } from "@material-ui/core/styles";
 import Cart from "./pages/CartPge";
 import Home from "./pages/Home";
+import Home2 from "./pages/Home2";
+
 
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
@@ -42,7 +44,7 @@ import Allpp from "./pages/AllPP";
 // import withFormik from './pages/withFormik'
 import Form from "./Login";
 import SizeChart from "./pages/SizeChart";
-import {Height} from '@material-ui/icons';
+import {Height, ExpandLess, ExpandMore} from '@material-ui/icons';
 // import { AirlineSeatIndividualSuiteSharp } from "@material-ui/icons";
 const drawerWidth = 160;
 const useStyles = makeStyles((theme: Theme) =>
@@ -59,10 +61,12 @@ const useStyles = makeStyles((theme: Theme) =>
       }),
     },
     appBarShift: {
-      width: `calc(100% - ${drawerWidth}px)`,
-      transition: theme.transitions.create(["margin", "width"], {
+      // width: `calc(100% - ${drawerWidth}px)`,
+      overflow:'hidden',
+      transition: theme.transitions.create(["margin"], {
         easing: theme.transitions.easing.easeOut,
         duration: theme.transitions.duration.enteringScreen,
+        
       }),
       marginRight: drawerWidth,
     },
@@ -104,7 +108,7 @@ const useStyles = makeStyles((theme: Theme) =>
       }),
       marginRight: -drawerWidth,
     },
-    contentShift: {
+    contentShift: {overflow:'hidden',
       transition: theme.transitions.create("margin", {
         easing: theme.transitions.easing.easeOut,
         duration: theme.transitions.duration.enteringScreen,
@@ -140,8 +144,19 @@ const useStyles = makeStyles((theme: Theme) =>
       [theme.breakpoints.up("sm")]: {
         position:'static'
       },
+
+    },
+    movingOpenDrwaer:{
+      display:'none'
+    },
+    carousel:{
+      width:'100%',
+      [theme.breakpoints.up('xs')] : {
+        maxWidth:'500px'
+      }
     }
   })
+
 );
 
 const dftheme = createMuiTheme({
@@ -169,6 +184,21 @@ function ResponsiveDrawer(props) {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+  const [ListItemOpen , setListItemOpen]= useState([{v:0,open:false}, {v:1,open:false} , {v:2,open:false}])
+const handleDrawerItemOpen =(e) => {
+  // const nestedItem = ListItemOpen.slice();
+  // console.log(nestedItem)
+  // const index = nestedItem.findIndex(item => item.v == e);
+  // console.log(index)
+  // if(3 > index >= 0 ) {
+  //   nestedItem[index].open =!nestedItem[index].open ;\
+  const nested= [...ListItemOpen]
+  nested.map(x => {if (x.v == e)  return x.open = !x.open})
+  
+  setListItemOpen(nested)
+  }
+  // setListItemOpen({ nestedItem });
+
 
   // const drawer = "";
 
@@ -197,11 +227,11 @@ function ResponsiveDrawer(props) {
               >
                 <Grid item  container
                 xs={12}
-                 sm={4} p>
+                 sm={4} >
                   {" "}
-                   <span style={{ paddingTop: "10px",margin: 'auto',right: 0, position: 'fixed' }}>
+                   {/* <span style={{ paddingTop: "10px",margin: 'auto',right: 0, position: 'fixed' }}> */}
                       <IconButton
-                      style={{ margin: "2px" }}
+                      style={{ paddingTop: "10px",margin: 'auto',right: 0, position: 'fixed'  }}
                       color="inherit"
                       aria-label="open drawer"
                       edge="start"
@@ -210,7 +240,7 @@ function ResponsiveDrawer(props) {
                     >
                       <MenuIcon />
                     </IconButton>
-                    </span>
+                    {/* </span> */}
                     <img
                       className={classes.logo}
                       src="https://i.imgur.com/SDG2AGG.png"
@@ -231,14 +261,21 @@ function ResponsiveDrawer(props) {
                     
                   
                       
-                    <Link  className={classes.moving}
+                    <Link  
+                    // className={classes.moving}
+                    className={clsx(classes.moving, {
+                      [classes.movingOpenDrwaer]: open,
+                    })}
+                 
                      to="/cart">
                       {" "}
                       <IconButton aria-label="">
                         <CartBadge />
                       </IconButton>
                     </Link>
-                    <span  className={classes.moving} style={{left:'40px'}}
+                    <span  className={clsx(classes.moving, {
+                      [classes.movingOpenDrwaer]: open,
+                    })} style={{left:'40px'}}
                      >
                     <Link style={{ paddingTop: "10px" }} to="/login">
                       <IconButton>
@@ -260,8 +297,8 @@ function ResponsiveDrawer(props) {
                 paper: classes.drawerPaper,
               }}
             >
-              <div className={classes.drawerHeader}>
-                <IconButton onClick={handleDrawerClose}>
+              <div className={classes.drawerHeader} >
+                <IconButton onClick={handleDrawerClose} style={{width:'100%'}}>
                   {theme.direction === "ltr" ? (
                     <ChevronLeftIcon />
                   ) : (
@@ -297,7 +334,7 @@ function ResponsiveDrawer(props) {
               <Divider />
 
               <List>
-                <ListItem button style={{ padding: 0 }} >
+                <ListItem button style={{ padding: 0 ,color:'white' }} id={1} onClick={() => handleDrawerItemOpen(0)} value={0}>
                   <Link
                     className="navlink"
                     onClick={() => onFilteration("اولادي")}
@@ -305,8 +342,22 @@ function ResponsiveDrawer(props) {
                   >
                     اولادي
                   </Link>
-                </ListItem>
-                <ListItem button style={{ padding: 0 }}>
+                  {ListItemOpen[0].open ? <ExpandLess /> : <ExpandMore />}
+                  {/* {open ? <ExpandLess /> : <ExpandMore />} */}
+                      </ListItem>
+                      <Collapse in={ListItemOpen[0].open} timeout="auto" unmountOnExit>
+                        <List color='white' component="div" disablePadding>
+                    <ListItem>
+                      <ListItemText color="white">تيشيرت</ListItemText>
+                    </ListItem>  <ListItem>
+                      <ListItemText>قميص</ListItemText>
+                    </ListItem>  <ListItem>
+                      <ListItemText>بنطلون</ListItemText>
+                    </ListItem>
+                  </List>
+                  </Collapse>
+                <ListItem button style={{ padding: 0, color:'white' }} onClick={() => handleDrawerItemOpen(1)}>
+                
                   <Link
                     className="navlink"
                     onClick={() => onFilteration("بناتي")}
@@ -314,7 +365,20 @@ function ResponsiveDrawer(props) {
                   >
                     بناتي
                   </Link>
-                </ListItem>
+                  {ListItemOpen[1].open ? <ExpandLess /> : <ExpandMore />}
+                  {/* {open ? <ExpandLess /> : <ExpandMore />} */}
+                      </ListItem>
+                      <Collapse in={ListItemOpen[1].open} timeout="auto" unmountOnExit>
+                        <List color='white'  disablePadding>
+                    <ListItem>
+                      <ListItemText color={theme.palette.getContrastText}>تيشيرت</ListItemText>
+                    </ListItem>  <ListItem>
+                      <ListItemText>قميص</ListItemText>
+                    </ListItem>  <ListItem>
+                      <ListItemText>بنطلون</ListItemText>
+                    </ListItem>
+                  </List>
+                  </Collapse>
               </List>
               <Divider />
               <List>
@@ -344,7 +408,7 @@ function ResponsiveDrawer(props) {
               <Product products={props.products} pid={props.pid} />
             </Route> */}
               <Route exact path="/">
-                <Home />
+                <Home2 />
               </Route>
               <Route path="/cart">
                 <Cart open={open} />{" "}
@@ -361,10 +425,10 @@ function ResponsiveDrawer(props) {
                     <Checkout />
                 </Route>
                 <Route path="/orderConfirmation/checkOut">
-                <Home />
+                <Home2 />
                 </Route>
                 <Route path="/orderConfirmation/review">
-                <Home />
+                <Home2 />
                 </Route>
                 <Route path="/size-chart">
                 <SizeChart />

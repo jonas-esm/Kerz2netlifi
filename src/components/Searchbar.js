@@ -26,6 +26,7 @@ import { useHistory } from "react-router-dom";
 import { fetchSearchResults } from "./reducers/actions";
 import { connect } from "react-redux";
 import PageviewIcon from "@material-ui/icons/Pageview";
+import SearchIcon from '@material-ui/icons/Search';
 // const theme = createMuiTheme({
 //   direction: "rtl",
 // });
@@ -104,7 +105,7 @@ const Search = (props) => {
             </div>
             <div className="input-field second-wrap">
               <button className="btn-search" type="button">
-                <PageviewIcon  fontSize="large" />
+                <SearchIcon  fontSize="large" />
               </button>
             </div>
           </div>{" "}

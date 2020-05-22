@@ -19,6 +19,10 @@ import {
   Select,
   MenuItem,
   FormControl
+, 
+  OutlinedInput
+, 
+  InputBase
 } from "@material-ui/core";
 import "./animateClasses.css";
 import { addToCart , selectProduct} from "../reducers/actions";
@@ -35,13 +39,24 @@ import Paginationc from "../Pagination";
     },
     root: {
       maxWidth: 183,
-      margin:'auto'
+      margin:'4'
     },
     media: {height: 250,display:'flex',justifyContent:'center'},
     img: {
       height: 250
     },
-    font:{fontFamily:"Tajawal" , color:'#777'}
+    font:{fontFamily:"Tajawal" , color:'#777', padding:0, marginBottom:0},
+    select:{
+      '&:focus' :{
+          background:'white',
+      }
+    }
+    ,
+    outlin:{root:{
+        color:'red',
+        background:'red',
+      }
+    }
   });
   const PdCards = Props => {
 
@@ -84,13 +99,14 @@ const classes = useStyles();
   return (
   <Box m="1">
   
-    <Grid container style={{}} spacing={1} wrap='wrap'>
+    <Grid container style={{justifyContent:'center'}} spacing={1} wrap='wrap'>
+
       {currentItems.map((item ,index) => {
         let sizeArr = item.sizes.split(",")
         let itemSize = ""
         
         return ( <Zoom key={index} timeout={800} in >
-          <Grid className={classes.root} key={item.product_id} item xs={6} sm={6} md={4} lg={4} xl={3}>
+          <Grid className={classes.root}  key={item.product_id} item xs={6} sm={6} md={4} lg={4} xl={3}>
             <Card className={classes.card}>
               {" "}
               <Link
@@ -106,7 +122,7 @@ const classes = useStyles();
                   <CardMedia className={classes.media}>
                     <img src={item.imgUrl} className={classes.img} />
                   </CardMedia>
-                  <CardContent>
+                  <CardContent style={{paddingBottom:0}}>
                     <Typography noWrap className={classes.font}>
                       {item.product_name}
                     </Typography>
@@ -127,17 +143,19 @@ const classes = useStyles();
                       
                     </Typography> */}
                   </CardContent>
-                </CardActionArea>
+                  </CardActionArea>
               </Link>
               <CardActions>
                 {/* <Button  variant="outlined" style={{marginLeft:4 }} size="small" color="primary">
                   Share
                 </Button> */}
-                                    <FormControl size="small" style={{margin:'auto'}} variant="outlined" className={classes.formControl}>
-                    <InputLabel id="demo-simple-select-outlined-label">s</InputLabel>
-                    <Select
-                      // labelId="demo-simple-select-filled-label"
-                      // id="demo-simple-select-filled"
+                                    <FormControl size="small" fullWidth style={{margin:'auto', height:'30px'}}  variant="outlined" className={classes.formControl}>
+                    <InputLabel classes={{outlined:classes.outlin}} style={{background:'white',padding:'0 4px'}} id="demo-simple-select-outlined-label" >المقاس</InputLabel>
+                    <Select classes={{select:classes.select}}
+                      labelId="demo-simple-select-filled-label"
+                      autoWidth 
+                      
+                      id="demo-simple-select-filled"
                       // value={size}
                       name={`make-${index}`} id={`make-${index}`}
                       onChange={handleSize}
@@ -149,11 +167,12 @@ const classes = useStyles();
                       <MenuItem value={size}>{size}</MenuItem>
                       )})}
                     </Select>
-                  </FormControl>
-
+                  </FormControl></CardActions>
+                  <CardActions>
                 <Button
                   style={{margin:'auto'}}
                   variant="contained"
+                  fullWidth
                   color="secondary"
                   size="small"
                   // onClick={() => Props.addToCart(item, "1" , size)}
@@ -162,6 +181,7 @@ const classes = useStyles();
                  شراء
                 </Button>
               </CardActions>
+              
             </Card>
           </Grid>
           </Zoom>

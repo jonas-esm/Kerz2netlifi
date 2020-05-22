@@ -78,8 +78,8 @@ function Product(Props) {
   } else {
     let sizeArr = selectedProduct.sizes.split(",");
     return (
-      <Grid container> <Grid item xs={12}>
-        <h2 style={{ margin: "auto", textAlign: "center" }}>
+      <Grid container> <Grid item xs={12} >
+        <h2 style={{ margin: "auto", textAlign: "center" , marginBottom:"10px" }}>
           {selectedProduct.product_name}
         </h2></Grid>
 
@@ -89,13 +89,15 @@ function Product(Props) {
           <Grid item xs={7}>
             
             <img
-              style={{ maxWidth:'100%', display: "inline" }}
+              style={{ maxWidth:'100%', }}
               src={selectedProduct.imgUrl}
             />
           </Grid>
-          <Grid item xs={5} >
+          <Grid container item xs={5} style={{ justifyContent:'start',
+                                      flexDirection:'column',
+                                      alignContent:'start' }} >
           
-              <Box display="flex inline"  flexDirection='column'>
+              {/* <Box display="flex"  flexDirection='column'> */}
               {getColors.map((item) => (
                 <Link
                   key={item.product_id}
@@ -106,7 +108,7 @@ function Product(Props) {
                   <img src={item.imgUrl} style={{ maxHeight: 100 }} />
                 </Link>
               ))}
-            </Box>
+            {/* </Box> */}
             </Grid>
           {/* </Grid> */}
           </Grid>

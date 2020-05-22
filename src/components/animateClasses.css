@@ -66,7 +66,7 @@ body{
   /* } */
   .s130 form {
     width: 100%;
-    border-radius: 66px;
+    border-radius: 10px;
     background: #ffffff;
     box-shadow:  -0px 2px 6px #c6aaf3, 
                  0px -2px 6px #ffffff;
@@ -83,7 +83,7 @@ body{
         align-items: center;
     /* box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15); */
     box-shadow: none;
-    border-radius: 34px;
+    border-radius: 5px;
     overflow: hidden;
   }
   

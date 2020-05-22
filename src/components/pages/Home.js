@@ -56,7 +56,7 @@ const Home = (props) => {
 <Paper component="div" style={{padding:'20px',margin:5}} > 
 <h4 style={{left:'200px'}}>Welcome To my store...</h4> </Paper>
 
-         <Paper>
+         {/* <Paper>
          <Toolbar 
             disableGutters={true}
              className={classes.toolbar}>
@@ -108,7 +108,7 @@ const Home = (props) => {
                     </Link></span>
                      
             </Toolbar>
-         </Paper>
+         </Paper> */}
     </div >
 </div>
     );
