@@ -52,7 +52,10 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     appBar: {
       backgroundColor: "#ffffff",
+      padding:'4px',
+      paddingBottom:0,
       // backgroundColor: "#faeadb",
+      boxShadow:'none',
       transition: theme.transitions.create(["margin", "width"], {
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.leavingScreen,

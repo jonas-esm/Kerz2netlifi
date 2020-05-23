@@ -94,6 +94,7 @@ const Search = (props) => {
         <form htmlFor="search-input">
           <div className="inner-form">
             <div className="input-field first-wrap">
+            <SearchIcon   fontSize="small" />
             
               <input
                 id="search-input"
@@ -103,12 +104,12 @@ const Search = (props) => {
                 onChange={(e) => handleOnChange(e)}
               />
             </div>
-            <div className="input-field second-wrap">
+            {/* <div className="input-field second-wrap">
               <button className="btn-search" type="button">
                 <SearchIcon  fontSize="large" />
               </button>
-            </div>
-          </div>{" "}
+            </div> */}
+          </div>
           {/* <TextField
            label="مالذي تبحث عنه؟"
             InputLabelProps={{

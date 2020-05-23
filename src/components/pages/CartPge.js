@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme: THeme) => createStyles({
   },
   but: {
    width: '50%',right:'25%'
-  
+  , margin:'10px'
   },
   root: {
     margin:'auto',
@@ -116,11 +116,7 @@ function Cart(Props) {
       //    </TableRow>
        // </TableBody>
      // </Table> */}
-      <Link to="/orderConfirmation/address">
-        <Button variant="outlined" color="secondary" className={classes.but}>
-          المتابعة لتأكيد طلب الشراء
-        </Button>
-      </Link>
+      
 
       <List className={classes.root}>
         {Props.cartItems.map((row, index) => {
@@ -134,7 +130,7 @@ function Cart(Props) {
               <ListItemText
                 dir='rtl'
                 
-                primary={<Typography align="right" ><span style={{margin:'0 10px'}}>{`${row.products.product_name}`}</span> </Typography>}
+                primary={<Typography align="right" ><span style={{margin:'0 5px'}}>{`${row.products.product_name}`}</span> </Typography>}
                 secondary={
                   <React.Fragment>
                     <Typography
@@ -144,7 +140,7 @@ function Cart(Props) {
                       className={classes.inline}
                       color="textSecondary"
                     >
-                     <span style={{margin:'0 10px'}}> {`مقاس ${row.size}`}</span> <span style={{margin:'0 10px'}}> {`الكمية ${row.quantity}`}</span> <span>{`السعر${row.products.product_price}`}</span> 
+                     <span style={{margin:'0 5px'}}> {`مقاس ${row.size}`}</span> <span style={{margin:'0 5px'}}> {`الكمية ${row.quantity}`}</span> <span>{`السعر  ${row.products.product_price}`}</span> 
                     </Typography>
                     <IconButton
                       aria-label="Delete"
@@ -183,7 +179,12 @@ function Cart(Props) {
                 }
               />
             </ListItem>
-        </List> </Box>)
+        </List>
+        <Link to="/orderConfirmation/address">
+        <Button variant="outlined" color="secondary" className={classes.but}>
+    متابعة
+        </Button>
+      </Link> </Box>)
  
 }
 const mapStateToProps = state => {

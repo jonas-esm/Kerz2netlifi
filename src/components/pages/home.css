@@ -1,0 +1,23 @@
+
+
+.size-list input {width:26px;
+	height:26px;
+	text-align:center;
+	line-height:26px;
+	font-size:14px;
+	display:inline;
+	color:#111;
+	background:#fff;
+	margin:0 1px;
+	transition:0.5s;
+	border-radius:4px;
+    cursor:pointer;
+    box-shadow: none;
+    border: none;
+}
+
+.size-list input:disabled{
+    background-color: greenyellow;
+    color: #fff;}
+
+

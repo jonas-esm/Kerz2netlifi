@@ -1,6 +1,7 @@
 import React, { useState , useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
+import './home.css'
 import {
   Card,
   Button,
@@ -38,14 +39,15 @@ import Paginationc from "../Pagination";
       backgroundColor: "RGB(255,255,255,0.5)"
     },
     root: {
-      maxWidth: 183,
+      maxWidth: 260,
+      minHeight:450,
       margin:'4'
     },
-    media: {height: 250,display:'flex',justifyContent:'center'},
+    media: {height: 280,display:'flex',justifyContent:'center'},
     img: {
-      height: 250
+     height:280
     },
-    font:{fontFamily:"Tajawal" , color:'#777', padding:0, marginBottom:0},
+    font:{fontFamily:"Tajawal" , padding:0, marginBottom:0},
     select:{
       '&:focus' :{
           background:'white',
@@ -56,12 +58,16 @@ import Paginationc from "../Pagination";
         color:'red',
         background:'red',
       }
+    },
+    card:{
+     width:'100%',
+     height:'100%'
     }
   });
   const PdCards = Props => {
 
 const [pdProducts , setPdProducts] = useState([])
-// const [page, setPage] = useState(1)
+const [anchorEl, setAnchoreEl] = useState(null)
 const [size , setSize] = useState("")
 const [currentPage , setCurrentPage] = useState(1)
 const itemsPerPage = 17
@@ -69,13 +75,18 @@ const lastItemIndex = currentPage * itemsPerPage
 const firstItemIndex = lastItemIndex - itemsPerPage
 const currentItems = pdProducts.slice(firstItemIndex, lastItemIndex)
 const pagesnumber = Math.ceil(pdProducts.length/itemsPerPage)
-console.log(currentPage, itemsPerPage , lastItemIndex , firstItemIndex , currentItems)
+// console.log(currentPage, itemsPerPage , lastItemIndex , firstItemIndex , currentItems)
 const handlePagination = (e,v) => {
   setCurrentPage(v)
 }
 const handleSize = (e) => {
   // e.preventDefault()
   setSize(e.target.value)
+}
+const handleNewSize =(e , index) => {
+  let newSize = e.target.value
+  setSize(newSize)
+  setAnchoreEl(`${newSize} ${index}`)
 }
 const handleBuying =(item , q , s) => {
   Props.addToCart(item , q , s)
@@ -106,9 +117,9 @@ const classes = useStyles();
         let itemSize = ""
         
         return ( <Zoom key={index} timeout={800} in >
-          <Grid className={classes.root}  key={item.product_id} item xs={6} sm={6} md={4} lg={4} xl={3}>
+          <Grid className={classes.root}  key={item.product_id} item xs={12} sm={6} md={4} lg={4} xl={3}>
             <Card className={classes.card}>
-              {" "}
+          
               <Link
                 to={"/products/pid=" + item.product_id}
                 style={{ textDecoration: "none", color: "default" }}
@@ -142,6 +153,10 @@ const classes = useStyles();
                       Sizes: {sizeArr.map((size) => {return (size +",  ")})}
                       
                     </Typography> */}
+                    <Typography fontFamily="Tajawal" className={classes.font}  noWrap variant='body1'  color="textPrimary"
+                      >
+                      المقاسات:
+                    </Typography>
                   </CardContent>
                   </CardActionArea>
               </Link>
@@ -149,7 +164,7 @@ const classes = useStyles();
                 {/* <Button  variant="outlined" style={{marginLeft:4 }} size="small" color="primary">
                   Share
                 </Button> */}
-                                    <FormControl size="small" fullWidth style={{margin:'auto', height:'30px'}}  variant="outlined" className={classes.formControl}>
+                                    {/* <FormControl size="small" fullWidth style={{margin:'auto', height:'30px'}}  variant="outlined" className={classes.formControl}>
                     <InputLabel classes={{outlined:classes.outlin}} style={{background:'white',padding:'0 4px'}} id="demo-simple-select-outlined-label" >المقاس</InputLabel>
                     <Select classes={{select:classes.select}}
                       labelId="demo-simple-select-filled-label"
@@ -167,7 +182,18 @@ const classes = useStyles();
                       <MenuItem value={size}>{size}</MenuItem>
                       )})}
                     </Select>
-                  </FormControl></CardActions>
+                    
+                  </FormControl>*/}
+                  
+                  <div className="size-list" >
+                  {/* <span>المقاس</span>  */}
+                  {sizeArr.map(size => {return (
+                  
+                  <input  name={`make-${index}`} type='button' disabled={anchorEl == `${size} ${index}`} value ={size} onClick={(e)=> handleNewSize(e , index)} />
+                  )})}
+                 
+                  </div>
+                  </CardActions> 
                   <CardActions>
                 <Button
                   style={{margin:'auto'}}

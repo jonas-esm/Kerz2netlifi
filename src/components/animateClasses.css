@@ -68,8 +68,8 @@ body{
     width: 100%;
     border-radius: 10px;
     background: #ffffff;
-    box-shadow:  -0px 2px 6px #c6aaf3, 
-                 0px -2px 6px #ffffff;
+    /* box-shadow:  -0px 2px 6px #c6aaf3, 
+                 0px -2px 6px #ffffff; */
     
   }
   
@@ -139,6 +139,7 @@ body{
         align-items: center;
     background: #ffffff;
     opacity: 0.5;
+    color:#DD766F;
   }
   
   .s130 form .inner-form .input-field.first-wrap input {
@@ -180,8 +181,8 @@ body{
     padding: 2px;
   }
   
-  .s130 form .inner-form .input-field.second-wrap .btn-search:hover {
-    background: #940025;
+  .s130 form .inner-form .input-field.second-wrap .btn-search:active {
+    background: #d2e8f7;
   }
   
   .s130 form .inner-form .input-field.second-wrap .btn-search:focus {

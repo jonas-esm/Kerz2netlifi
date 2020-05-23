@@ -20,15 +20,16 @@ export default function Allpp (props) {
       ]);
       const [pid, setPid] = useState();
       const [loading, setLoading] = useState(true);
-      useEffect(() => {if (loading) {
+      useEffect(() => {if (loading){
          fetchData().then((res) => {
-       
+        // if(res.data.data != undefined){
         setProducts([...res.data.data])
         setLoading(false);}).catch(err => {
           console.log(err)
+        
           alert('خطا في الاتصال بقواعد البيانات')
         })}
-      }, [products, loading]);
+      }, [ loading]);
       // if(products.length <= 1)
       if(loading)
     return(
