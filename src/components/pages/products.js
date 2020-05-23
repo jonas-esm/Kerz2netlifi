@@ -1,7 +1,8 @@
 import React, { useState , useEffect } from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles ,createStyles,Theme} from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 import './home.css'
+
 import {
   Card,
   Button,
@@ -23,7 +24,7 @@ import {
 , 
   OutlinedInput
 , 
-  InputBase
+  InputBase,
 } from "@material-ui/core";
 import "./animateClasses.css";
 import { addToCart , selectProduct} from "../reducers/actions";
@@ -34,18 +35,29 @@ import { Link } from "react-router-dom";
 import Loading2 from '../Asset/Loading2'
 import Paginationc from "../Pagination";
   
-  const useStyles = makeStyles({
+const useStyles = makeStyles((theme: Theme) => createStyles({
+   
     root1: {
       backgroundColor: "RGB(255,255,255,0.5)"
     },
     root: {
       maxWidth: 260,
       minHeight:450,
-      margin:'4'
+      margin:'4',
+      [theme.breakpoints.down('sm')]:{
+        maxWidth:350,
+      }
+
     },
-    media: {height: 280,display:'flex',justifyContent:'center'},
+    media: {height: 320,
+      [theme.breakpoints.down('xs')]:{
+        height:400,
+      },display:'flex',justifyContent:'center'},
     img: {
-     height:280
+     height:320,
+     [theme.breakpoints.down('xs')]:{
+      height:400,
+    }
     },
     font:{fontFamily:"Tajawal" , padding:0, marginBottom:0},
     select:{
@@ -63,7 +75,7 @@ import Paginationc from "../Pagination";
      width:'100%',
      height:'100%'
     }
-  });
+  }));
   const PdCards = Props => {
 
 const [pdProducts , setPdProducts] = useState([])
