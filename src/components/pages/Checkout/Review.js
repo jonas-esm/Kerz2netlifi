@@ -10,6 +10,7 @@ import { Alert, AlertTitle } from '@material-ui/lab';
 import { connect } from "react-redux";
 import axios from "axios";
 import { Email, renderEmail, Item, A } from "react-html-email";
+import { rmFromCart } from "../../reducers/actions";
 // const products = [
 //   { name: 'Product 1', desc: 'A nice thing', price: '$9.99' },
 //   { name: 'Product 2', desc: 'Another thing', price: '$3.45' },
@@ -194,6 +195,7 @@ function Review(Props) {
     const messageHtml = renderEmail(
       <MyEmail form={Props.form} order={Props.cartItems} />
     );
+
     setSending(true);
     axios({
       method: "POST",
@@ -212,6 +214,7 @@ function Review(Props) {
 
           alert("تم ارسال طلبك!");
           Props.setStep(Props.step + 1);
+          Props.clrCart(1,true)
           // this.resetForm()
         }
         // else if (response.data.msg === 'fail') {
@@ -315,4 +318,10 @@ const mapStateToProps = (state) => {
     form: state.OrderReducer.addressForm,
   };
 };
-export default connect(mapStateToProps)(Review);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    clrCart: (index,clear) =>
+    dispatch(rmFromCart(index, clear))
+  };
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Review);

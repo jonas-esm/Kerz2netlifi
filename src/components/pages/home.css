@@ -1,5 +1,14 @@
 
-
+.size-list {
+	width: inherit;
+	display: flex;
+	flex-direction: row;
+	overflow: scroll;
+	padding-bottom:7px;
+}
+.size-list::-webkit-scrollbar-thumb {
+	background: #fff;
+  }
 .size-list input {width:26px;
 	height:26px;
 	text-align:center;

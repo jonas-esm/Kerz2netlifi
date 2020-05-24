@@ -1,22 +1,13 @@
 import React, { useState, useEffect } from "react";
 // import SearchIcon from "@material-ui/icons/Search";
+// import {
+//   // withStyles,
+//   // createMuiTheme,
+//   // ThemeProvider,
+//   // makeStyles,
+//   // createStyles,
+// } from "@material-ui/core/styles";
 import {
-  // withStyles,
-  // createMuiTheme,
-  // ThemeProvider,
-  makeStyles,
-  createStyles,
-} from "@material-ui/core/styles";
-import {
-  // TextField,
-  // Grid,
-  // Button,
-  // FormControl,
-  // InputLabel,
-  // OutlinedInput,
-  // InputAdornment,
-  // IconButton,
-
   Box, TextField
 } from "@material-ui/core";
 
@@ -25,51 +16,41 @@ import { useHistory } from "react-router-dom";
 // import axios from "axios";
 import { fetchSearchResults } from "./reducers/actions";
 import { connect } from "react-redux";
-import PageviewIcon from "@material-ui/icons/Pageview";
 import SearchIcon from '@material-ui/icons/Search';
 // const theme = createMuiTheme({
 //   direction: "rtl",
 // });
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    gri: {},
-    formLabelRoot: {
-      backgroundColor: "#fefefe",
+// const useStyles = makeStyles((theme: Theme) =>
+//   createStyles({
+//     gri: {},
+//     formLabelRoot: {
+//       backgroundColor: "#fefefe",
       
-      left:'calc(100% - 110px)',
-      margin:'auto',
-      textAlign:'right',
-      // position:'absolute'
+//       left:'calc(100% - 110px)',
+//       margin:'auto',
+//       textAlign:'right',
+//       // position:'absolute'
       
-    },
-    sb:{
+//     },
+//     sb:{
      
-      //   maxHeight:'100px',
+//       //   maxHeight:'100px',
  
-      //   display: 'flex',
-      //       justifyContent: 'center',
-      //       fontFamily: 'Tajawal, sans-serif',
-      //   margin:'auto',
-      //  padding: '5px',
+//       //   display: 'flex',
+//       //       justifyContent: 'center',
+//       //       fontFamily: 'Tajawal, sans-serif',
+//       //   margin:'auto',
+//       //  padding: '5px',
       
-    }
-  })
-);
-const useStyleu = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      "& label": {
-        right: 0,
-      },
-    },
-  })
-);
+//     }
+//   })
+// );
 
 const Search = (props) => {
   // let cancel = "";
 
   const history = useHistory();
-  const classes = useStyles();
+  // const classes = useStyles();
   const [query, setQuery] = useState("");
 
   // const classeu = useStyleu();

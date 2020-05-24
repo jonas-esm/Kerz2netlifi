@@ -9,8 +9,8 @@ export async function fetchData(res) {
 }
 export async function fetchDat2a(result, error ) {
   
-  // axios.get("http://127.0.0.1:8000/products")
-  axios.get("https://kerz-sy-api.herokuapp.com/products")
+  axios.get("http://127.0.0.1:8000/products")
+  // axios.get("https://kerz-sy-api.herokuapp.com/products")
 
   .then(function (response) {
     // handle success

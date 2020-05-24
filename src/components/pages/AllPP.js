@@ -1,8 +1,8 @@
 import React ,{useState, useEffect}from 'react'
 import { fetchData } from "../../api/api";
-import PdCards from './products'
+// import PdCards from './products'
 import Product from "./prdetails";
-
+import InfintLoading from './newProducts'
 
 import {BrowserRouter as Router , Link , Route, Switch} from 'react-router-dom'
 import Loading2 from '../Asset/Loading2';
@@ -23,11 +23,15 @@ export default function Allpp (props) {
       useEffect(() => {if (loading){
          fetchData().then((res) => {
         // if(res.data.data != undefined){
-        setProducts([...res.data.data])
+        if(JSON.stringify(res.data)=== "{}"){
+          alert('تم رفض الوصول لقواعد البيانات');
+          console.log(`database error , res = ${res}`)}
+        else setProducts([...res.data.data])
+        // console.log(res.data)
         setLoading(false);}).catch(err => {
           console.log(err)
         
-          alert('خطا في الاتصال بقواعد البيانات')
+          alert('api error: خطا في الاتصال بقواعد البيانات')
         })}
       }, [ loading]);
       // if(products.length <= 1)
@@ -38,12 +42,15 @@ export default function Allpp (props) {
 return (
     //  <Router> <Switch>
     <div>
-        <Route exact path="/products">
-            <PdCards  products={products}/>
+        <Route exact path="/products/origin">
+            {/* <PdCards  products={products}/> */}
             </Route>
             <Route exact path="/products/pid=:id">
               <Product  products={products} pid={pid} />
               
+            </Route>
+            <Route  exact path="/products">
+              <InfintLoading products={products} pid={pid} />
             </Route>
             </div>
         //     </Switch>

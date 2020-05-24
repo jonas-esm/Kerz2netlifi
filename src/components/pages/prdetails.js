@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams , useHistory} from "react-router-dom";
 
 import Loading2 from '../Asset/Loading2'
 
@@ -41,7 +41,15 @@ function Product(Props) {
   // const selectedProduct = Props.products.find(
   //   (obj) => obj.product_id === urlparam.id
   // );
-
+const history = useHistory()
+useEffect(() => {
+  return () => {
+      if (history.action === "POP") // && history.location.pathname === "any specific path") {
+          history.replace({ pathname: 'products'}/* the new state */);
+          
+        }
+  
+}, [history])
   useEffect(() => {
     setTimeout(() => {
       // if (!Props.products == undefined){
@@ -51,6 +59,7 @@ function Product(Props) {
         (item) =>
           item.barcode == selectedProduct.barcode && item.barcode != null
       );
+      
       // console.log(urlparam.id,found,selectedProduct ,barcodes )
 
       setTimeout(() => {

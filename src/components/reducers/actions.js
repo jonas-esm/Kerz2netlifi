@@ -18,10 +18,11 @@ export const addToCart = (productInfo, quantity , size) => {
     size
   };
 };
-export const rmFromCart = (index) => {
+export const rmFromCart = (index , clear) => {
   return {
     type: REMOVE_FROM_CART,
     index: index,
+    clear:clear
   };
 };
 

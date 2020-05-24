@@ -6,14 +6,14 @@ import {
   BrowserRouter as Router,
 
 } from "react-router-dom";
-import {useClearCache} from 'react-clear-cache'
+
 import {connect} from 'react-redux'
 import RTL from './RTL'
 import ResponsiveDrawer from "./components/sideMenu";
 // import {fetchPosts} from './components/reducers/actions';
 
 function App(props) {
-  const {isLatestVersion, emptyCacheStorage} =useClearCache()
+  // const {isLatestVersion, emptyCacheStorage} =useClearCache()
   // const [products, setProducts] = useState([
   //   {
   //     categori: "Men's",
@@ -53,12 +53,12 @@ function App(props) {
     <Router>
       <div>
         <RTL>
-          {!isLatestVersion && (
+          {/* {!isLatestVersion && (
             <p><a href='#' onClick={e => {
               e.preventDefault()
               emptyCacheStorage()
             }}>Update Version</a></p>
-          )}
+          )} */}
         <ResponsiveDrawer setFiltered = {p => {setFiltered(p)}}  pid={pid} />
         </RTL>
        

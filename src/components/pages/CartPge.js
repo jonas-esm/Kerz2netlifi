@@ -13,9 +13,9 @@ import clsx from 'clsx'
 import {rmFromCart} from '../reducers/actions'
 import {Link} from 'react-router-dom'
 import '../Asset/styles.css'
-import '../Asset/bootstrap.css'
-import '../Asset/swiper.css'
-const useStyles = makeStyles((theme: THeme) => createStyles({
+import { ShoppingBasketRounded } from "@material-ui/icons";
+
+const useStyles = makeStyles((theme: Theme) => createStyles({
   table: {
     maxWidth: 800,
   },
@@ -40,13 +40,13 @@ const useStyles = makeStyles((theme: THeme) => createStyles({
 
 
 function Cart(Props) {
-  const ttl = (res) => {
+  // const ttl = (res) => {
       
-  }
-  const [itemmd, setitemme] = useState('')
-  const changeCount = (e) =>{
-    setitemme({[e.target.name] : e.target.value})}
-  console.log(Props.cartItems[1])
+  // }
+  // const [itemmd, setitemme] = useState('')
+  // const changeCount = (e) =>{
+  //   setitemme({[e.target.name] : e.target.value})}
+  // console.log(Props.cartItems[1])
   const classes = useStyles();
 
   return (
@@ -156,7 +156,7 @@ function Cart(Props) {
         })}
          <ListItem alignItems="flex-start">
               <ListItemAvatar>
-               الاجمالي
+               <ShoppingBasketRounded />
               </ListItemAvatar>
               <ListItemText
                 dir='rtl'
@@ -197,8 +197,8 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = dispatch => {
   return {
-    rmFromCart: (index) =>
-      dispatch(rmFromCart(index))
+    rmFromCart: (index , clear) =>
+      dispatch(rmFromCart(index , clear))
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Cart);

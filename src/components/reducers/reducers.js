@@ -42,7 +42,8 @@ export function cartReducers(
       // const new_state = { ...state };
       // delete new_state.cart[item_index];
       // return new_state;
-      return Object.assign({},state,state.cart.splice(action.index , 1)) };
+      if (action.clear){  return Object.assign({},state,state.cart.splice(1 , state.cart.length - 1))  }
+     else return Object.assign({},state,state.cart.splice(action.index , 1)) };
     
 
     default:
