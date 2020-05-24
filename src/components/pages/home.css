@@ -26,7 +26,7 @@
 }
 
 .size-list input:disabled{
-    background-color: greenyellow;
+    background-color: #fb6e6e;
 	color: #fff;}
 	
 	/* @media screen and (min-width: 700px){
