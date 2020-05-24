@@ -13,6 +13,8 @@ import {
   ListItem,
 } from "@material-ui/core";
 import clsx from "clsx";
+import Slide from '@material-ui/core/Slide';
+import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import MenuIcon from "@material-ui/icons/Menu";
@@ -165,7 +167,19 @@ const dftheme = createMuiTheme({
   palette: {},
   direction: "rtl",
 });
+function HideOnScroll(props) {
+  const { children, window } = props;
+  // Note that you normally won't need to set the window ref as useScrollTrigger
+  // will default to window.
+  // This is only being set here because the demo is in an iframe.
+  const trigger = useScrollTrigger({ target: window ? window() : undefined });
 
+  return (
+    <Slide appear={false} direction="down" in={!trigger}>
+      {children}
+    </Slide>
+  );
+}
 function ResponsiveDrawer(props) {
   // const { container } = props;
   const classes = useStyles();
@@ -209,6 +223,7 @@ const handleDrawerItemOpen =(e) => {
       <div className={classes.root}>
         <ThemeProvider theme={dftheme}>
           <CssBaseline />
+          <HideOnScroll {...props}>
           <AppBar
             color="inherit"
             position="fixed"
@@ -289,6 +304,7 @@ const handleDrawerItemOpen =(e) => {
                      </Grid> 
             </Toolbar>
           </AppBar>
+          </HideOnScroll>
           <nav className={classes.drawer} aria-label="mailbox folders">
             <Drawer
               className={classes.drawer}

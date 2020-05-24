@@ -1,14 +1,14 @@
 
 .size-list {
-	width: inherit;
+	margin:auto;
+	width: 100%;
 	display: flex;
 	flex-direction: row;
-	overflow: scroll;
+	overflow-x: auto;
 	padding-bottom:7px;
+	overflow-y: hidden; 
 }
-.size-list::-webkit-scrollbar-thumb {
-	background: #fff;
-  }
+
 .size-list input {width:26px;
 	height:26px;
 	text-align:center;
@@ -27,6 +27,12 @@
 
 .size-list input:disabled{
     background-color: greenyellow;
-    color: #fff;}
+	color: #fff;}
+	
+	/* @media screen and (min-width: 700px){
+		.size-list {
+		
+		}
+	} */
 
 

@@ -47,11 +47,11 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
       backgroundColor: "RGB(255,255,255,0.5)"
     },
     root: {
-      maxWidth: 260,
+     
       minHeight:350,
       margin:'4',
       [theme.breakpoints.down('sm')]:{
-        maxWidth:200,
+      
       }
 
     },
@@ -126,7 +126,7 @@ useEffect(() => {
    setListItems(prevState => [...prevState, ...Props.products.slice(prevState.length,prevState.length+10)])
    setIsFetching(false)
    if (listItems.length === Props.products.length){setHasMore(false)}
-  }, 500); 
+  }, 1000); 
  
 }, [isFetching])  
 
@@ -135,7 +135,7 @@ function fetchMoreListItems() {
     setTimeout(() => {
       // setListItems(prevState => ([...prevState, ...Array.from(pdProducts.keys(10), n => n + prevState.length + 1)]));
       setIsFetching(true);
-    }, 100);
+    }, 500);
   }
 function handleScroll() {
     if (window.innerHeight + Math.ceil(document.documentElement.scrollTop) !== document.documentElement.offsetHeight) return;
@@ -158,7 +158,7 @@ const classes = useStyles();
   loader={<div> <Loading2/></div>}
   endMessage={
     <p style={{textAlign: 'center'}}>
-      <b>Yay! You have seen it all</b>
+      <b>__________________</b>
     </p>
   }>
     <Grid container style={{justifyContent:'center'}} spacing={1} wrap='wrap'>
@@ -176,8 +176,8 @@ const classes = useStyles();
         let sizeArr = item.sizes.split(",")
         let itemSize = ""
         
-        return ( <Zoom key={index} timeout={800} in >
-          <Grid className={classes.root}  key={item.product_id} item xs={6} sm={6} md={3} lg={3} xl={3}>
+        return ( <Zoom key={index} timeout={1000} in >
+          <Grid className={classes.root}  key={item.product_id} item xs={6} sm={6} md={3} lg={2} xl={2}>
             <Card className={classes.card}>
           
               <Link
@@ -194,15 +194,17 @@ const classes = useStyles();
                     <img src={item.imgUrl} className={classes.img} />
                   </CardMedia>
                   <CardContent style={{paddingBottom:0}}>
-                    <Typography noWrap className={classes.font}>
+                     
+                    <Typography noWrap  component="span" className={classes.font}>
                       {item.product_name}
                     </Typography>
                     <Typography
                       variant="body1"
                       color="textSecondary"
-                      component="p"
+                      component="span"
+                      style={{paddingRight:'13px'}} 
                     >
-                      price: {item.product_price}$
+                      {item.product_price}ج.م
                       
                     </Typography>
                    
@@ -227,10 +229,10 @@ const classes = useStyles();
                   </CardActions> 
                   <CardActions>
                 <Button
-                  style={{margin:'auto'}}
+                  style={{margin:'auto', backgroundColor:'#fb6e6e',color:'#fff'}}
                   variant="contained"
                   fullWidth
-                  color="secondary"
+                 
                   size="small"
                 
                   onClick={()=>handleBuying(item , "1" , size)}
