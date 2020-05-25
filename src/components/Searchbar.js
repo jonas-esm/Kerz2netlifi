@@ -64,7 +64,7 @@ const Search = (props) => {
       props.onSearch(query);
       console.log("doneeeeeeee");
 
-      history.push(`/search`);
+      history.push(`/search/`+ query);
     }
   }, [query]);
   // function onSubmit() {}

@@ -2,6 +2,9 @@ import React,{useState, useEffect} from "react";
 import { connect } from "react-redux";
 import { makeStyles } from '@material-ui/core/styles';
 import InfintLoading from './newProducts'
+import { useParams } from "react-router-dom";
+import { fetchSearchResults } from "../reducers/actions";
+import Loading2 from "../Asset/Loading2";
 // import {rmFromCart, fetchSearchResults} from '../reducers/actions'
 // const useStyles = makeStyles({
 //   table: {
@@ -20,13 +23,17 @@ function FilteredProducts(Props) {
 //    setProducts(Props.filtered)
 //    console.log(products)
 //  }, 3000);
+const urlParams = useParams()
+const [query , setQuery] = useState("اولادي")
+
 useEffect(() => {
-console.log('monted')
-  
+console.log('mounted')
+if (Props.filtered.length <=2) Props.onSearch(query) 
+  console.log(urlParams)
   
 }, [Props.isLoading])
   // const classes = useStyles();
-  if (Props.isLoading ){return <div>No search Result</div>}
+  if (Props.isLoading ){return <Loading2 />}
   else {return (
     <div>
 
@@ -48,6 +55,10 @@ const mapStateToProps = state => {
       isLoading : state.SearchRes.loading,
   };
 };
+const mapDispatchToProps =(dispatch) => {return{
+  onSearch: (query) => {
+    dispatch(fetchSearchResults(query));
+  },
+}}
 
-
-export default connect(mapStateToProps)(FilteredProducts);
+export default connect(mapStateToProps, mapDispatchToProps)(FilteredProducts);

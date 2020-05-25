@@ -66,7 +66,7 @@ useEffect(() => {
     ))
               setTimeout(() => {
                   
-              
+              console.log(urlParams)
             //   setColors(barcodes);
               setSizeArr(found.sizes.split(","))
         console.log(found  , barcodeState , size)

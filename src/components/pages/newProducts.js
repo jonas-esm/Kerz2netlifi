@@ -218,7 +218,7 @@ const classes = useStyles();
                       
                     </Typography>
                    
-                    <Link to="/size-chart" style={{display:'block',color:'#555',textDecoration:'none'}}>
+                    <Link to={"/size-chart"} style={{display:'block',color:'#555',textDecoration:'none'}}>
                  
                   دليل المقاسات
                   

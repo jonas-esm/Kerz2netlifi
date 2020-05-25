@@ -441,7 +441,7 @@ const handleDrawerItemOpen =(e) => {
               <Route path="/cart">
                 <Cart open={open} />{" "}
               </Route>
-              <Route path="/search">
+              <Route path="/search/:query">
                 <FilteredProducts />{" "}
               </Route>
               <Route path="/login">
