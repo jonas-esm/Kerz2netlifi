@@ -29,7 +29,8 @@ import {
   Typography,
   CardContent,
  
-  Zoom,
+  // Zoom,
+  Grow,
 
 } from "@material-ui/core";
 import "./animateClasses.css";
@@ -65,7 +66,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
       height:300,
     }
     },
-    font:{fontFamily:"Tajawal" , padding:0, marginBottom:0},
+    font:{fontFamily:"Tajawal" , padding:0, marginBottom:0 , color:'#333'},
     select:{
       '&:focus' :{
           background:'white',
@@ -85,7 +86,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
   const InfintLoading = Props => {
 
 // const [pdProducts , setPdProducts] = useState([])
-const [anchorEl, setAnchoreEl] = useState(null)
+const [anchorEl, setAnchoreEl] = useState(4)
 const [size , setSize] = useState("")
 const [listItems , setListItems] = useState([])
     const [isFetching , setIsFetching] = useState(false)
@@ -102,8 +103,11 @@ const handleNewSize =(e , index) => {
   setAnchoreEl(`${newSize} ${index}`)
 }
 const handleBuying =(item , q , s) => {
+  if(!s) {alert('يرجى اختيار المقاس')
+  console.log(s)}
+  else{
   Props.addToCart(item , q , s)
-  setSize("")
+}
 }
 
 // //////////////////////
@@ -163,7 +167,13 @@ const classes = useStyles();
   }>
     <Grid container style={{justifyContent:'center'}} spacing={1} wrap='wrap'>
             
-                
+                <Grid item xs={12} style={{background:'rgb(128, 0, 32)'}}>
+                <Link to="/size-chart" style={{decoration:'none',}}>
+                  <Button style={{color:'#fff'}} >
+                  دليل المقاسات
+                  </Button>
+                  </Link>
+                </Grid>
             {/* {listItems.map((i, index) => (
             <div style={{margin:'23px'}} key={index}>
               div - #{index}
@@ -176,7 +186,7 @@ const classes = useStyles();
         let sizeArr = item.sizes.split(",")
         let itemSize = ""
         
-        return ( <Zoom key={index} timeout={1000} in >
+        return ( <Grow key={index} timeout={1000} in >
           <Grid className={classes.root}  key={item.product_id} item xs={6} sm={6} md={3} lg={2} xl={2}>
             <Card className={classes.card}>
           
@@ -208,10 +218,12 @@ const classes = useStyles();
                       
                     </Typography>
                    
-                    <Typography fontFamily="Tajawal" className={classes.font}  noWrap variant='body1'  color="textPrimary"
-                      >
-                      المقاسات:
-                    </Typography>
+                    <Link to="/size-chart" style={{display:'block',color:'#555',textDecoration:'none'}}>
+                 
+                  دليل المقاسات
+                  
+                  </Link>
+                
                   </CardContent>
                   </CardActionArea>
               </Link>
@@ -243,7 +255,7 @@ const classes = useStyles();
               
             </Card>
           </Grid>
-          </Zoom>
+          </Grow>
         );
       })}
     </Grid>

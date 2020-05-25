@@ -1,7 +1,7 @@
 import React,{useState, useEffect} from "react";
 import { connect } from "react-redux";
 import { makeStyles } from '@material-ui/core/styles';
-import PdCards from './products'
+import InfintLoading from './newProducts'
 // import {rmFromCart, fetchSearchResults} from '../reducers/actions'
 // const useStyles = makeStyles({
 //   table: {
@@ -30,7 +30,7 @@ console.log('monted')
   else {return (
     <div>
 
-      <PdCards products={Props.filtered} />
+      <InfintLoading products={Props.filtered} />
 
 
     </div>

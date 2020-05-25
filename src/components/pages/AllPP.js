@@ -1,13 +1,17 @@
 import React ,{useState, useEffect}from 'react'
 import { fetchData } from "../../api/api";
 // import PdCards from './products'
-import Product from "./prdetails";
+// import Product from "./prdetails";
 import InfintLoading from './newProducts'
-
+import NewPrdetail from './newPrdetail'
+import {useParams} from 'react-router-dom'
 import {BrowserRouter as Router , Link , Route, Switch} from 'react-router-dom'
 import Loading2 from '../Asset/Loading2';
+import { connect } from 'react-redux';
+import { selectProduct, addToCart } from '../reducers/actions';
 
-export default function Allpp (props) {
+function Allpp (Props) {
+  const urlParams = useParams()
     const [products, setProducts] = useState([
         {
           categori: "Men's",
@@ -27,6 +31,7 @@ export default function Allpp (props) {
           alert('تم رفض الوصول لقواعد البيانات');
           console.log(`database error , res = ${res}`)}
         else setProducts([...res.data.data])
+        
         // console.log(res.data)
         setLoading(false);}).catch(err => {
           console.log(err)
@@ -34,6 +39,15 @@ export default function Allpp (props) {
           alert('api error: خطا في الاتصال بقواعد البيانات')
         })}
       }, [ loading]);
+      useEffect(() => {
+        if(Boolean(urlParams.id != undefined)){
+          console.log(urlParams)
+          const found = products.find((item) => item.product_id == urlParams.id);
+          // Props.selectProduct(found)
+        }
+       
+     
+      }, [urlParams])
       // if(products.length <= 1)
       if(loading)
     return(
@@ -45,10 +59,11 @@ return (
         <Route exact path="/products/origin">
             {/* <PdCards  products={products}/> */}
             </Route>
-            <Route exact path="/products/pid=:id">
-              <Product  products={products} pid={pid} />
+            <Route exact path="/products/pid=:id"><NewPrdetail  products={products} pid={pid} /></Route>
+            {/* <Route exact path="/products/pid=:id"> */}
+              {/* <Product  products={products} pid={pid} />
               
-            </Route>
+            </Route> */}
             <Route  exact path="/products">
               <InfintLoading products={products} pid={pid} />
             </Route>
@@ -58,3 +73,18 @@ return (
     )
          
 }
+const mapStateToProps = (state) => {
+  return {
+      product: state.slctedProd,
+      
+}}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+          addToCart: (productsInfo, quantity, size) =>
+            dispatch(addToCart(productsInfo, quantity, size)),
+          selectProduct: (slctedProda) => dispatch(selectProduct(slctedProda)),
+}}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Allpp)
+

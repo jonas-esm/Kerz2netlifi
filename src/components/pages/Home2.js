@@ -8,6 +8,7 @@ import SimpleImageSlider from "react-simple-image-slider";
 import {makeStyles ,useTheme,
   Theme, createStyles} from '@material-ui/core/styles'
 import { Grid, ButtonGroup, Button, FormControl, RadioGroup, FormControlLabel, Radio, FormLabel, List, ListItem, FormHelperText } from '@material-ui/core'
+import { Link } from 'react-router-dom'
 const useStyles = makeStyles((theme: Theme) =>{
   createStyles({
     root:
@@ -46,6 +47,15 @@ export default function Home2(props) {
         container
         //  style={{position:'absolute' ,width:'499px' , height:'434px'}}
       >
+         <Grid item xs={12} style={{background:'rgb(128, 0, 32)'}}>
+                <Link to="/size-chart" style={{textDecoration:'none',padding:'10px',margin:'5px',color:'#fafafa'}}>
+                دليل المقاسات.
+                  </Link><Link to="/products" style={{textDecoration:'none',padding:'10px',margin:'5px',color:'#fafafa'}}>
+                  منتجاتنا
+                  </Link><Link to="/" style={{textDecoration:'none',padding:'10px',margin:'5px',color:'#fafafa'}}>
+                  افضل العروض
+                  </Link>
+                </Grid>
         <Grid
           item
           xs={12}

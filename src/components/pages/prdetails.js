@@ -1,228 +1,228 @@
-import React, { useEffect, useState } from "react";
-import { useParams , useHistory} from "react-router-dom";
+// import React, { useEffect, useState } from "react";
+// import { useParams , useHistory} from "react-router-dom";
 
-import Loading2 from '../Asset/Loading2'
+// import Loading2 from '../Asset/Loading2'
 
-import {
-  Button,
-  Box,
-  Typography,
-  MenuItem,
-  Grid,
-  TextField,
+// import {
+//   Button,
+//   Box,
+//   Typography,
+//   MenuItem,
+//   Grid,
+//   TextField,
  
-} from "@material-ui/core";
-import {makeStyles,
-  createStyles} from '@material-ui/core/styles'
-import { Link } from "react-router-dom";
-import { connect } from "react-redux";
-import { addToCart, selectProduct } from "../reducers/actions";
-// import {UndoRounded} from '@material-ui/icons';
-const useStyles = makeStyles((theme) => ({
-  formLabelRoot: {
+// } from "@material-ui/core";
+// import {makeStyles,
+//   createStyles} from '@material-ui/core/styles'
+// import { Link } from "react-router-dom";
+// import { connect } from "react-redux";
+// import { addToCart, selectProduct } from "../reducers/actions";
+// // import {UndoRounded} from '@material-ui/icons';
+// const useStyles = makeStyles((theme) => ({
+//   formLabelRoot: {
     
-  },
-  MuiInputLabel: {
+//   },
+//   MuiInputLabel: {
     
-  }}))
+//   }}))
 
-function Product(Props) {
-  const [selectedProduct, setSelectedProduct] = useState({});
-  const [loading, setLoading] = useState(true);
-  const [quantity, setQuantity] = useState(1);
-  const [getColors, setColors] = useState([]);
-  const [size, setSize] = useState("");
-  const urlparam = useParams();
-  const { products } = Props;
-  const seconds = 500;
-  const handleSize = (e) => {
-    setSize(e.target.value);
-  };
-  // const selectedProduct = Props.products.find(
-  //   (obj) => obj.product_id === urlparam.id
-  // );
-const history = useHistory()
-useEffect(() => {
-  return () => {
-      if (history.action === "POP") // && history.location.pathname === "any specific path") {
-          history.replace({ pathname: 'products'}/* the new state */);
+// function Product(Props) {
+//   const [selectedProduct, setSelectedProduct] = useState({});
+//   const [loading, setLoading] = useState(true);
+//   const [quantity, setQuantity] = useState(1);
+//   const [getColors, setColors] = useState([]);
+//   const [size, setSize] = useState("");
+//   const urlparam = useParams();
+//   const { products } = Props;
+//   const seconds = 500;
+//   const handleSize = (e) => {
+//     setSize(e.target.value);
+//   };
+//   // const selectedProduct = Props.products.find(
+//   //   (obj) => obj.product_id === urlparam.id
+//   // );
+// const history = useHistory()
+// useEffect(() => {
+//   return () => {
+//       if (history.action === "POP") // && history.location.pathname === "any specific path") {
+//           history.replace({ pathname: 'products'}/* the new state */);
           
-        }
+//         }
   
-}, [history])
-  useEffect(() => {
-    setTimeout(() => {
-      // if (!Props.products == undefined){
-      const found = products.find((item) => item.product_id == urlparam.id);
-      setSelectedProduct(found);
-      const barcodes = products.filter(
-        (item) =>
-          item.barcode == selectedProduct.barcode && item.barcode != null
-      );
+// }, [history])
+//   useEffect(() => {
+//     setTimeout(() => {
+//       // if (!Props.products == undefined){
+//       const found = products.find((item) => item.product_id == urlparam.id);
+//       setSelectedProduct(found);
+//       const barcodes = products.filter(
+//         (item) =>
+//           item.barcode == selectedProduct.barcode && item.barcode != null
+//       );
       
-      // console.log(urlparam.id,found,selectedProduct ,barcodes )
+//       // console.log(urlparam.id,found,selectedProduct ,barcodes )
 
-      setTimeout(() => {
-        setColors(barcodes);
-        // setColors(
-        //   products.find(obj => obj.barcode == selectedProduct.barcode )
-        // );
+//       setTimeout(() => {
+//         setColors(barcodes);
+//         // setColors(
+//         //   products.find(obj => obj.barcode == selectedProduct.barcode )
+//         // );
 
-        setLoading(false);
-      }, seconds + 500);
-      // }
-    }, seconds);
-  }, [selectedProduct]);
-  const handleQuantity = (e) => {
-    setQuantity(e.target.value);
-  };
-  const classes = useStyles()
+//         setLoading(false);
+//       }, seconds + 500);
+//       // }
+//     }, seconds);
+//   }, [selectedProduct]);
+//   const handleQuantity = (e) => {
+//     setQuantity(e.target.value);
+//   };
+//   const classes = useStyles()
 
-  if (loading) {
-    return (
-      <div>
-        <Loading2 />
-      </div>
-    );
-  } else {
-    let sizeArr = selectedProduct.sizes.split(",");
-    return (
-      <Grid container> <Grid item xs={12} >
-        <h2 style={{ margin: "auto", textAlign: "center" , marginBottom:"10px" }}>
-          {selectedProduct.product_name}
-        </h2></Grid>
+//   if (loading) {
+//     return (
+//       <div>
+//         <Loading2 />
+//       </div>
+//     );
+//   } else {
+//     let sizeArr = selectedProduct.sizes.split(",");
+//     return (
+//       <Grid container> <Grid item xs={12} >
+//         <h2 style={{ margin: "auto", textAlign: "center" , marginBottom:"10px" }}>
+//           {selectedProduct.product_name}
+//         </h2></Grid>
 
-        <Grid container item xs={12}>
-          <Grid  container item xs={12} lg={6}>
-        {/* <Grid container item xs={6}> */}
-          <Grid item xs={7}>
+//         <Grid container item xs={12}>
+//           <Grid  container item xs={12} lg={6}>
+//         {/* <Grid container item xs={6}> */}
+//           <Grid item xs={7}>
             
-            <img
-              style={{ maxWidth:'100%', }}
-              src={selectedProduct.imgUrl}
-            />
-          </Grid>
-          <Grid container item xs={5} style={{ justifyContent:'start',
-                                      flexDirection:'column',
-                                      alignContent:'start' }} >
+//             <img
+//               style={{ maxWidth:'100%', }}
+//               src={selectedProduct.imgUrl}
+//             />
+//           </Grid>
+//           <Grid container item xs={5} style={{ justifyContent:'start',
+//                                       flexDirection:'column',
+//                                       alignContent:'start' }} >
           
-              {/* <Box display="flex"  flexDirection='column'> */}
-              {getColors.map((item) => (
-                <Link
-                  key={item.product_id}
-                  to={"/products/pid=" + item.product_id}
-                  style={{ textDecoration: "none", color: "default" ,display: "inlineBlock"}}
-                  onClick={() => setSelectedProduct(item)}
-                >
-                  <img src={item.imgUrl} style={{ maxHeight: 100 }} />
-                </Link>
-              ))}
-            {/* </Box> */}
-            </Grid>
-          {/* </Grid> */}
-          </Grid>
-          {/* <Box p={2} style={{ flexGrow: 1 }}> */}
-          <Grid item xs={12} lg={6} >
-          <Box display="flex"  flexDirection='column' style={{textAlign:'center'}} justifyItems='center' m={1} p={1}>
+//               {/* <Box display="flex"  flexDirection='column'> */}
+//               {getColors.map((item) => (
+//                 <Link
+//                   key={item.product_id}
+//                   to={"/products/pid=" + item.product_id}
+//                   style={{ textDecoration: "none", color: "default" ,display: "inlineBlock"}}
+//                   onClick={() => setSelectedProduct(item)}
+//                 >
+//                   <img src={item.imgUrl} style={{ maxHeight: 100 }} />
+//                 </Link>
+//               ))}
+//             {/* </Box> */}
+//             </Grid>
+//           {/* </Grid> */}
+//           </Grid>
+//           {/* <Box p={2} style={{ flexGrow: 1 }}> */}
+//           <Grid item xs={12} lg={6} >
+//           <Box display="flex"  flexDirection='column' style={{textAlign:'center'}} justifyItems='center' m={1} p={1}>
 
-            <Typography p={2} align="center" variant="h5" color="secondary">
-              {selectedProduct.product_price}.EGP
-            </Typography>
-            <div>
-              {/* <FormControl variant="outlined" style={{maxWidth:'200px',width:'100%', margin: "auto" }}>
-                <InputLabel id="demo-simple-select-outlined-label">
-                  الكمية
-                </InputLabel>
-                <Select
-                  value={quantity}
-                  onChange={handleQuantity}>
-                  <MenuItem value={1}>1</MenuItem>
-                  <MenuItem value={2}>2</MenuItem>
-                  <MenuItem value={3}>3</MenuItem>
-                  <MenuItem value={4}>4</MenuItem>
-                  <MenuItem value={5}>5</MenuItem>
-                  <MenuItem value={6}>6</MenuItem>
-                  <MenuItem value={7}>7</MenuItem>
-                </Select>
-              </FormControl> */}
-               <TextField
-               style={{maxWidth:'200px',width:'100%', margin: "20px", }}
-          name={`makeq-${selectedProduct.product_id}`}
-          id={`makeq-${selectedProduct.product_id}`}
-          value={quantity}
-          onChange={handleQuantity}
-          select
-          label="الكمية"
-          variant='standard'
+//             <Typography p={2} align="center" variant="h5" color="secondary">
+//               {selectedProduct.product_price}.EGP
+//             </Typography>
+//             <div>
+//               {/* <FormControl variant="outlined" style={{maxWidth:'200px',width:'100%', margin: "auto" }}>
+//                 <InputLabel id="demo-simple-select-outlined-label">
+//                   الكمية
+//                 </InputLabel>
+//                 <Select
+//                   value={quantity}
+//                   onChange={handleQuantity}>
+//                   <MenuItem value={1}>1</MenuItem>
+//                   <MenuItem value={2}>2</MenuItem>
+//                   <MenuItem value={3}>3</MenuItem>
+//                   <MenuItem value={4}>4</MenuItem>
+//                   <MenuItem value={5}>5</MenuItem>
+//                   <MenuItem value={6}>6</MenuItem>
+//                   <MenuItem value={7}>7</MenuItem>
+//                 </Select>
+//               </FormControl> */}
+//                <TextField
+//                style={{maxWidth:'200px',width:'100%', margin: "20px", }}
+//           name={`makeq-${selectedProduct.product_id}`}
+//           id={`makeq-${selectedProduct.product_id}`}
+//           value={quantity}
+//           onChange={handleQuantity}
+//           select
+//           label="الكمية"
+//           variant='standard'
         
-        > <MenuItem value={1}>1</MenuItem>
-        <MenuItem value={2}>2</MenuItem>
-        <MenuItem value={3}>3</MenuItem>
-        <MenuItem value={4}>4</MenuItem>
-        <MenuItem value={5}>5</MenuItem>
-        <MenuItem value={6}>6</MenuItem>
-        <MenuItem value={7}>7</MenuItem></TextField>
-            </div>
-            <div>
+//         > <MenuItem value={1}>1</MenuItem>
+//         <MenuItem value={2}>2</MenuItem>
+//         <MenuItem value={3}>3</MenuItem>
+//         <MenuItem value={4}>4</MenuItem>
+//         <MenuItem value={5}>5</MenuItem>
+//         <MenuItem value={6}>6</MenuItem>
+//         <MenuItem value={7}>7</MenuItem></TextField>
+//             </div>
+//             <div>
           
-              <TextField
-              style={{maxWidth:'200px',width:'100%', margin: "20px" }}
-          name={`make-${selectedProduct.product_id}`}
-          id={`make-${selectedProduct.product_id}`}
-          onChange={handleSize}
-          value={size}
-          InputLabelProps={{
-            classes: { root: classes.formLabelRoot },
-          }}
+//               <TextField
+//               style={{maxWidth:'200px',width:'100%', margin: "20px" }}
+//           name={`make-${selectedProduct.product_id}`}
+//           id={`make-${selectedProduct.product_id}`}
+//           onChange={handleSize}
+//           value={size}
+//           InputLabelProps={{
+//             classes: { root: classes.formLabelRoot },
+//           }}
 
-          select
-          label="المقاس"
-          helperText="يرجى ادخال المقاس"
-          variant='standard'
+//           select
+//           label="المقاس"
+//           helperText="يرجى ادخال المقاس"
+//           variant='standard'
 
-        >
-          {sizeArr.map((size) => {
-                    return <MenuItem key={size} value={size}>{`${size}  سنوات`}</MenuItem>;
-                  })}
-        </TextField>
+//         >
+//           {sizeArr.map((size) => {
+//                     return <MenuItem key={size} value={size}>{`${size}  سنوات`}</MenuItem>;
+//                   })}
+//         </TextField>
 
-            </div>
-            <Link to="/size-chart" style={{decoration:'none',}}>
-              <Button color='primary'>
-              دليل المقاسات
-              </Button></Link>
+//             </div>
+//             <Link to="/size-chart" style={{decoration:'none',}}>
+//               <Button color='primary'>
+//               دليل المقاسات
+//               </Button></Link>
 
-            <Button
-              variant="contained"
-              onClick={() => Props.addToCart(selectedProduct, quantity, size)}
-              color="primary"
-              size="large"
-              style={{ margin: "auto" }}
-            >
-              اضافة الى السلة
-            </Button>
-            <h4>
-              اجمالي المبلغ ={"  "} {quantity * selectedProduct.product_price}
-            </h4>
-            </Box>
-          </Grid>
-          </Grid>
-          </Grid>
+//             <Button
+//               variant="contained"
+//               onClick={() => Props.addToCart(selectedProduct, quantity, size)}
+//               color="primary"
+//               size="large"
+//               style={{ margin: "auto" }}
+//             >
+//               اضافة الى السلة
+//             </Button>
+//             <h4>
+//               اجمالي المبلغ ={"  "} {quantity * selectedProduct.product_price}
+//             </h4>
+//             </Box>
+//           </Grid>
+//           </Grid>
+//           </Grid>
           
-    );
-  }
-}
-const mapStateToProps = (state) => {
-  return {
+//     );
+//   }
+// }
+// const mapStateToProps = (state) => {
+//   return {
    
-    product: state.slctedProd,
-  };
-};
-const mapDispatchToProps = (dispatch) => {
-  return {
-    addToCart: (productsInfo, quantity, size) =>
-      dispatch(addToCart(productsInfo, quantity, size)),
-    selectProduct: (slctedProda) => dispatch(selectProduct(slctedProda)),
-  };
-};
-export default connect(mapStateToProps, mapDispatchToProps)(Product);
+//     product: state.slctedProd,
+//   };
+// };
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     addToCart: (productsInfo, quantity, size) =>
+//       dispatch(addToCart(productsInfo, quantity, size)),
+//     selectProduct: (slctedProda) => dispatch(selectProduct(slctedProda)),
+//   };
+// };
+// export default connect(mapStateToProps, mapDispatchToProps)(Product);

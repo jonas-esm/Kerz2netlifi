@@ -366,12 +366,18 @@ const handleDrawerItemOpen =(e) => {
                       <Collapse in={ListItemOpen[0].open} timeout="auto" unmountOnExit>
                         <List color='white' component="span" >
                     <ListItem>
-                    <Link className="navlink" to="/cart" onClick={handleDrawerClose}>تيشيرت</Link>
+                    <Link className="navlink" to="/search/تيشيرت اولادي"
+                           onClick={() => onFilteration("تيشيرت اولادي")}
+
+                    >
+                      تيشيرت</Link>
                     </ListItem>  <ListItem>
-                    <Link className="navlink" to="/cart" onClick={handleDrawerClose}>قميص</Link>
+                    <Link className="navlink" to="/search/قميص اولادي" onClick={() => onFilteration("قميص اولادي")}
+                    >قميص</Link>
                     </ListItem>  <ListItem button>
                       {/* <ListItemText >بنطلون</ListItemText> */}
-                      <Link className="navlink" to="/cart" onClick={handleDrawerClose}> بنطلون </Link>
+                      <Link className="navlink" to="/search/بنطلون اولادي" onClick={() => onFilteration("بنطلون اولادي")}
+                      > بنطلون </Link>
                     </ListItem>
                   </List>
                   </Collapse>
@@ -390,11 +396,14 @@ const handleDrawerItemOpen =(e) => {
                       <Collapse in={ListItemOpen[1].open} timeout="auto" unmountOnExit>
                         <List color='white'  disablePadding>
                     <ListItem>
-                    <Link className="navlink" to="/cart" onClick={handleDrawerClose}>تيشيرت</Link>
+                    <Link className="navlink" to="/search/تيشيرت بناتي" onClick={() => onFilteration("تيشيرت بناتي")}
+                    >تيشيرت</Link>
                     </ListItem>  <ListItem>
-                    <Link className="navlink" to="/cart" onClick={handleDrawerClose}>قميص</Link>
+                    <Link className="navlink" to="/search/قميص بناتي" onClick={() => onFilteration("قميص بناتي")}
+                    >قميص</Link>
                     </ListItem>  <ListItem>
-                    <Link className="navlink" to="/cart" onClick={handleDrawerClose}>بنطلون</Link>
+                    <Link className="navlink" to="/search/بنطلون بناتي" onClick={() => onFilteration("بنطلون بناتي")}
+                    >بنطلون</Link>
                     </ListItem>
                   </List>
                   </Collapse>
