@@ -19,7 +19,8 @@ function Allpp (Props) {
           product_id: "091",
           product_name: "قميص اولادي",
           product_price: 799,
-          barcode:"34334"
+          barcode:"34334",
+          sizes:"4,5,6"
         },
       ]);
       const [pid, setPid] = useState();

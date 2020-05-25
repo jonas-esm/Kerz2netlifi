@@ -22,6 +22,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import { Link } from "react-router-dom";
 import {makeStyles,
   createStyles} from '@material-ui/core/styles'
+import SizeChart from './SizeChart'
   const useStyles = makeStyles((theme) => ({
       formLabelRoot: {
         
@@ -80,6 +81,8 @@ const handleClickOpen =() => {
   const handleClose = () => {
     setOpen(false);
   };
+  const [sizeChartOpen , setSizeChartOpen] = useState(false)
+const handleSizeChartOpen = (boolean) => setSizeChartOpen(boolean)
   const descriptionElementRef = useRef(null);
   React.useEffect(() => {
     if (open) {
@@ -107,19 +110,42 @@ const handleClickOpen =() => {
              <Dialog
         open={open}
         onClose={handleClose}
-        scroll={'paper'}
+        scroll="body"
         aria-labelledby="scroll-dialog-title"
         aria-describedby="scroll-dialog-description"
+        // maxWidth="lg"
+        fullScreen
       >
         
-        <DialogContent dividers={false}>
+       
         <img
                   style={{ width:'120%' }}
                   src={selectedProduct.imgUrl}
                   onClick={handleClose}
                 />
-        </DialogContent>
         
+        
+      </Dialog>
+      <Dialog
+         open={sizeChartOpen}
+         onClose={()=> handleSizeChartOpen(false)}
+        scroll="paper"
+        aria-labelledby="scroll-dialog-title"
+        aria-describedby="scroll-dialog-description"
+        // maxWidth={false}
+        fullScreen
+        
+      >
+        
+       <DialogContent onClick={()=> handleSizeChartOpen(false)}>
+        {/* <img
+                  style={{ width:'120%' }}
+                  src={selectedProduct.imgUrl}
+                  onClick={handleClose}
+                />
+         */}
+         <SizeChart /> 
+        </DialogContent>
       </Dialog>
                <Grid  container item xs={12} lg={6}>
              {/* <Grid container item xs={6}> */}
@@ -219,11 +245,11 @@ const handleClickOpen =() => {
             </TextField>
     
                 </div>
-                <Link to="/size-chart" style={{decoration:'none',}}>
-                  <Button color='primary' >
+                {/* <Link to="/size-chart" style={{decoration:'none',}}> */}
+                  <Button onClick={()=> handleSizeChartOpen(true)} color='primary' >
                   دليل المقاسات
                   </Button>
-                  </Link>
+                  {/* </Link> */}
     
                 <Button
                   variant="contained"

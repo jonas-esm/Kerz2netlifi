@@ -104,7 +104,7 @@ const useStyles = makeStyles((theme: Theme) =>
     content: {
       flexGrow: 1,
       padding: theme.spacing(0),
-      paddingTop: theme.spacing(12),
+      paddingTop: theme.spacing(9),
       background:'#fff',
       transition: theme.transitions.create("margin", {
         easing: theme.transitions.easing.easeIn,
