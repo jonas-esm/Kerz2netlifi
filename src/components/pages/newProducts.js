@@ -80,7 +80,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
       }
     },
     card:{
-     width:'100%',
+    //  width:'95vw',
     //  height:'100%'
     }
   }));
@@ -166,15 +166,15 @@ const classes = useStyles();
       <b>__________________</b>
     </p>
   }>
-    <Grid container style={{justifyContent:'center'}} spacing={1} wrap='wrap'>
+    <Grid container style={{justifyContent:'center', maxWidth:'100vw'}} spacing={1} wrap='wrap'>
             
-                <Grid item xs={12} style={{background:'rgb(128, 0, 32)'}}>
+                {/* <Grid item xs={12} style={{background:'rgb(128, 0, 32)'}}>
                 <Link to="/size-chart" style={{decoration:'none',}}>
                   <Button style={{color:'#fff'}} >
                   دليل المقاسات
                   </Button>
                   </Link>
-                </Grid>
+                </Grid> */}
             {/* {listItems.map((i, index) => (
             <div style={{margin:'23px'}} key={index}>
               div - #{index}
