@@ -24,7 +24,7 @@ function FilteredProducts(Props) {
 //    console.log(products)
 //  }, 3000);
 const urlParams = useParams()
-const [query , setQuery] = useState("اولادي")
+const [query , setQuery] = useState(() => urlParams.query)
 
 useEffect(() => {
 console.log('mounted')

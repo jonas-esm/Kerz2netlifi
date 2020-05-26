@@ -66,7 +66,7 @@ const AutoplaySlider = withAutoplay(AwesomeSlider);
           {/* <Button style={{display:'inline-block',width:'max-content',background:'#f1f1f1',  margin:'5px'}} variant="contained"> */}
              <Link
             style={{ textDecoration: "inherit", color: "inherit",display:'inline-block',width:'max-content',background:'#f1f1f1',padding:'10px',borderRadius:'2px',  margin:'5px' }}
-            to="/products"
+            to={"/products"}
           >  منتجاتنا
             </Link>
               
@@ -74,7 +74,7 @@ const AutoplaySlider = withAutoplay(AwesomeSlider);
             {/* </Button> */}
             {/* <Button style={{display:'inline-block',width:'max-content',background:'#f1f1f1',  margin:'5px'}} variant="contained"> */}
               <Link
-            to="/search/اولادي"
+            to={"/search/اولادي"}
             style={{ textDecoration: "inherit", color: "inherit",display:'inline-block',width:'max-content',background:'#f1f1f1',padding:'10px',borderRadius:'2px',  margin:'5px' }}
           > 
                   اولادي
@@ -82,7 +82,7 @@ const AutoplaySlider = withAutoplay(AwesomeSlider);
          </Link>  {/* </Button> */}
           {/* <Button style={{display:'inline-block',width:'max-content',background:'#f1f1f1',  margin:'5px'}} variant="contained"> */}
               <Link
-            to="/search/بناتي"
+            to={"/search/بناتي"}
             style={{ textDecoration: "inherit", color: "inherit",display:'inline-block',width:'max-content',background:'#f1f1f1',padding:'10px',borderRadius:'2px',  margin:'5px' }}
           > 
              بناتي
@@ -90,7 +90,7 @@ const AutoplaySlider = withAutoplay(AwesomeSlider);
           {/* </Button> */}
           {/* <Button style={{display:'inline-block',width:'max-content',background:'#f1f1f1',  margin:'5px'}} variant="contained"> */}
               <Link
-            to="/products"
+            to={"/products"}
             style={{ textDecoration: "inherit", color: "inherit",display:'inline-block',width:'max-content',background:'#f1f1f1',padding:'10px',borderRadius:'2px',  margin:'5px' }}
           > 
             افضل العروض
@@ -98,7 +98,7 @@ const AutoplaySlider = withAutoplay(AwesomeSlider);
           {/*  </Button> */}
          
             {/* <Button style={{display:'inline-block',width:'max-content',background:'#f1f1f1',  margin:'5px'}} variant="contained"> */}
-              <Link to="/" style={{ textDecoration: "none", color: "inherit",display:'inline-block',width:'max-content',background:'#f1f1f1',padding:'10px',borderRadius:'2px',  margin:'5px' }}>
+              <Link to={"/"} style={{ textDecoration: "none", color: "inherit",display:'inline-block',width:'max-content',background:'#f1f1f1',padding:'10px',borderRadius:'2px',  margin:'5px' }}>
              اخر الاخبار</Link>
            {/*  </Button>*/}
            </div> 
