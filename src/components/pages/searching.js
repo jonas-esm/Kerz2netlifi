@@ -28,11 +28,14 @@ const [query , setQuery] = useState(() => urlParams.query)
 
 useEffect(() => {
 console.log('mounted')
-if (Props.searchMessage === "Failed to fetch results.Please check network" ||Props.searchMessage === "There are no more search results. Please try a new search.") {return console.log("Proplem")}
-if (Props.filtered.length <=2 ) Props.onSearch(query) 
+if (Props.searchMessage === "Failed to fetch results.Please check network" ||Props.searchMessage === "There are no more search results. Please try a new search.") {return console.log(Props.searchMessage)}
+if (Props.filtered.length <=2 ) {Props.onSearch(query) ;
+  console.log('search done')
+}
+
   console.log(urlParams)
   // if (Props.message ==="no search"){Props.onSearch}
-}, [Props.isLoading])
+}, [urlParams])
   // const classes = useStyles();
   if (Props.isLoading ){return <Loading2 />}
   else if(Props.searchMessage === "Failed to fetch results.Please check network") {

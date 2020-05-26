@@ -96,10 +96,10 @@ const useStyles = makeStyles((theme: Theme) =>
       // necessary for content to be below app bar
       ...theme.mixins.toolbar,
       justifyContent: "flex-start",
-      [theme.breakpoints.up('sm')] : {
-        padding: theme.spacing(0, 0),
-        display:'none'
-      }
+      // [theme.breakpoints.up('sm')] : {
+      //   padding: theme.spacing(0, 0),
+      //   display:'none'
+      // }
     },
     content: {
       flexGrow: 1,
@@ -111,6 +111,9 @@ const useStyles = makeStyles((theme: Theme) =>
         duration: theme.transitions.duration.leavingScreen,
       }),
       marginRight: -drawerWidth,
+      [theme.breakpoints.down('xs')]:{
+        paddingTop:theme.spacing(14),
+      }
     },
     contentShift: {overflow:'hidden',
       transition: theme.transitions.create("margin", {
@@ -151,7 +154,18 @@ const useStyles = makeStyles((theme: Theme) =>
 
     },
     movingOpenDrwaer:{
-      display:'none'
+      [theme.breakpoints.down('sm')] :{
+      display:'none'}
+    },
+    movingnDrwaerCloseButton:{
+      display:'none',},
+    movingOpenDrwaerCloseButton:{
+      
+      [theme.breakpoints.down('sm')] :{
+      display:'block',
+    background:'rgba(162, 158, 158, 0.2)',
+    borderRadius:'8px'
+    }
     },
     carousel:{
       width:'100%',
@@ -247,6 +261,7 @@ const handleDrawerItemOpen =(e) => {
                  sm={4} >
                   {" "}
                    {/* <span style={{ paddingTop: "10px",margin: 'auto',right: 0, position: 'fixed' }}> */}
+                   
                       <IconButton
                       style={{ paddingTop: "10px",margin: 'auto',right: 0, position: 'fixed'  }}
                       color="inherit"
@@ -258,10 +273,23 @@ const handleDrawerItemOpen =(e) => {
                       <MenuIcon />
                     </IconButton>
                     {/* </span> */}
+                          <IconButton
+                            // style={{ paddingTop: "10px",margin: 'auto',right: 0, position: 'fixed'  }}
+                            color="inherit"
+                            aria-label="open drawer"
+                            edge="start"
+                            onClick={handleDrawerClose}
+                            className={clsx(classes.movingnDrwaerCloseButton, {
+                              [classes.movingOpenDrwaerCloseButton]: open,
+                            })}
+                          >
+                                <ChevronRightIcon />
+                          </IconButton>
                     <img
                       className={classes.logo}
                       src="https://i.imgur.com/SDG2AGG.png"
                     />
+                    
                 </Grid>
                
                   
@@ -315,15 +343,15 @@ const handleDrawerItemOpen =(e) => {
                 paper: classes.drawerPaper,
               }}
             >
-              <div className={classes.drawerHeader} >
-                <IconButton onClick={handleDrawerClose} style={{width:'100%'}}>
-                  {theme.direction === "ltr" ? (
-                    <ChevronLeftIcon />
-                  ) : (
+              {/* <div className={classes.drawerHeader} > */}
+                {/* <IconButton onClick={handleDrawerClose} style={{width:'100%'}}>
+           
+                 
+                  
                     <ChevronRightIcon />
-                  )}
-                </IconButton>
-              </div>
+              
+                </IconButton> */}
+              {/* </div> */}
               <Divider />
               <List>
                 {/* {['Categories', 'Boys', 'Girls', 'Babys'].map((text, index) => ( */}
@@ -424,7 +452,7 @@ const handleDrawerItemOpen =(e) => {
               [classes.contentShift]: open,
             })}
           >
-            <div className={classes.drawerHeader} />
+            {/* <div className={classes.drawerHeader} /> */}
             {/* <div className={classes.toolbar1} /> */}
             <Switch>
               <Route path="/products">

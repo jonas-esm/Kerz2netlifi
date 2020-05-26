@@ -5,6 +5,7 @@ import home_6 from "./images/home_6.jpg";
 import home_7 from "./images/home_7.jpg";
 import home_10 from "./images/home_10.jpg";
 import home_11 from "./images/home_11.jpg";
+import sale1 from './images/sale1.png'
 
 import "./home.css";
 // import SimpleImageSlider from "react-simple-image-slider";
@@ -30,7 +31,7 @@ import 'react-awesome-slider/dist/styles.css';
 
 const useStyles = makeStyles((theme: Theme) => {
   createStyles({
-    root: { height: "434px" },
+    root: { maxHeight: "434px" },
     size: {
       "&span": {
         background: "red",
@@ -108,8 +109,17 @@ const AutoplaySlider = withAutoplay(AwesomeSlider);
         
         //  style={{position:'absolute' ,width:'499px' , height:'434px'}}
       >
+          <Grid
+          item container
+          xs={12}
+          // style={{  margin: "auto" }}
+          className={classes.root}
+        >
+          < img src ={sale1} style={{width:'90vw', margin:'auto 20px'}} />
+        </Grid>
         <Grid
-          item
+          item container
+          
           xs={12}
           style={{  margin: "auto" }}
           className={classes.root}
@@ -132,7 +142,7 @@ const AutoplaySlider = withAutoplay(AwesomeSlider);
     interval={4000}
   
           bullets={false}
-          startupScreen={(<div style={{height:'100%',width:'100%', background:'#fff'}}><h1 style={{color:'#ab5b50',margin:'auto'}}> Welcome</h1></div>)}
+          startupScreen={(<div style={{height:'100%',width:'90vw', background:'#fff'}}><h1 style={{color:'#ab5b50',margin:'auto'}}> Welcome</h1></div>)}
   >
     {images.map((img , i) => 
     <div style={{width:'100%'}} key={i} data-src={img} />

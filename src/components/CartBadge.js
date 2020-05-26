@@ -1,4 +1,5 @@
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+// import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 import {Badge} from '@material-ui/core'
 import React from 'react'
 // import store from '../store'
@@ -9,7 +10,7 @@ function CartBadge(Props){
     return(
         <Badge badgeContent={Props.quantity - 1}  style={{background:'#rgb(255, 32, 0)'}}>
             
-        <ShoppingCartIcon style={{fill:'#777'}} />
+        <ShoppingCartOutlinedIcon style={{fill:'#777'}} />
         </Badge>
     );
 };
