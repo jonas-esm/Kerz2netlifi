@@ -60,7 +60,7 @@ export function selectedSubreddit(state = "reactjs", action) {
 }
 export function SearchRes (state = {
   loading: false,
-  message:'',
+  message:'no search',
   products:{data:[]},
   query:''
 } , action){

@@ -28,13 +28,17 @@ const [query , setQuery] = useState("اولادي")
 
 useEffect(() => {
 console.log('mounted')
-if (Props.filtered.length <=2) Props.onSearch(query) 
+if (Props.searchMessage === "Failed to fetch results.Please check network" ||Props.searchMessage === "There are no more search results. Please try a new search.") {return console.log("Proplem")}
+if (Props.filtered.length <=2 ) Props.onSearch(query) 
   console.log(urlParams)
-  
+  // if (Props.message ==="no search"){Props.onSearch}
 }, [Props.isLoading])
   // const classes = useStyles();
   if (Props.isLoading ){return <Loading2 />}
-  else {return (
+  else if(Props.searchMessage === "Failed to fetch results.Please check network") {
+    return (<h2>فشل في الاتصال بقواعد البيانات</h2>)}
+    else{
+    return (
     <div>
 
       <InfintLoading products={Props.filtered} />
@@ -53,6 +57,7 @@ const mapStateToProps = state => {
       filtered : state.SearchRes.products.data,
       searchKey : state.SearchRes.query,
       isLoading : state.SearchRes.loading,
+      searchMessage:state.SearchRes.message,
   };
 };
 const mapDispatchToProps =(dispatch) => {return{
