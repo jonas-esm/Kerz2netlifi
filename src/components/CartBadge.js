@@ -7,9 +7,9 @@ function CartBadge(Props){
         
 
     return(
-        <Badge badgeContent={Props.quantity - 1} color="primary">
+        <Badge badgeContent={Props.quantity - 1}  style={{background:'#rgb(255, 32, 0)'}}>
             
-        <ShoppingCartIcon style={{fill:'#DD766F'}} />
+        <ShoppingCartIcon style={{fill:'#777'}} />
         </Badge>
     );
 };

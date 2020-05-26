@@ -296,7 +296,7 @@ const handleDrawerItemOpen =(e) => {
                      >
                     <Link style={{ paddingTop: "10px" }} to="/login">
                       <IconButton>
-                        <AccountCircleIcon style={{ fill: "#DD766F" }} />
+                        <AccountCircleIcon style={{ fill: "#777" }} />
                       </IconButton>
                     </Link></span>
                   
