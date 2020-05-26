@@ -58,12 +58,12 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
     },
     media: {height: 300,
       [theme.breakpoints.down('xs')]:{
-        height:300,
+        height:220,
       },display:'flex',justifyContent:'center'},
     img: {
      height:300,
      [theme.breakpoints.down('xs')]:{
-      height:300,
+      height:220,
     }
     },
     font:{fontFamily:"Tajawal" , padding:0, marginBottom:0 , color:'#333'},
@@ -76,10 +76,11 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
     outlin:{root:{
         color:'red',
         background:'red',
+
       }
     },
     card:{
-    //  width:'100%',
+     width:'100%',
     //  height:'100%'
     }
   }));
