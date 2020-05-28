@@ -81,7 +81,7 @@ export function fetchSearchResults(query) {
   return function (dispatch) {
     console.log("req will be made");
     dispatch(requestSearch(query));
-    const searchUrl2 = `https://127.0.0.1:8000/search/`;
+    const searchUrl3 = `http://127.0.0.1:8000/search/`;
     const searchUrl = `https://kerz-sy-api.herokuapp.com/search/`;
 
     axios

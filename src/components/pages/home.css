@@ -56,6 +56,30 @@
 		--loader-bar-color: #851515;
 		--loader-bar-height: 6px;
 		}
+		/* #root {
+			height: 100%;
+			overflow-x: hidden;
+		  }
+		  
+		  .List {
+			border: 1px solid #fff;
+		  }
+		  
+		  .ListItemEven,
+		  .ListItemOdd {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		  }
+		  
+		  .ListItemEven {
+			background-color: #fff;
+		  } */
+		  .grid > div {
+			position: relative;
+			margin: auto;
+		  }
+		  
 
 /* maxWidth:'100vw',
   overflow: 'auto',

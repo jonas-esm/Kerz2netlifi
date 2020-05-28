@@ -9,13 +9,13 @@ export default function SizeChart() {
         <div >
             <Grid container >
          
-              <Grid  item xs={12} md={6} lg={6}>
+              <Grid container item xs={12} md={6} lg={6}>
                   {/* <img style={{width:'100%'}} src='https://i.imgur.com/yJNUXDc.png' /> */}
                 <img  style={{margin:'auto' , maxWidth:'100%'}} src={Tsh} />
 
               </Grid>
               
-              <Grid  item xs={12} md={6} lg={6}>
+              <Grid  container item xs={12} md={6} lg={6}>
               {/* <img  className={classes.chart} src='https://i.imgur.com/Grbd8pz.png' /> */}
               <img style={{margin:'auto'}} src={Snum} />
 

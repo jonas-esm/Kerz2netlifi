@@ -1,4 +1,4 @@
-import React ,{useState, useEffect}from 'react'
+import React ,{useState, useEffect, Fragment}from 'react'
 import { fetchData } from "../../api/api";
 // import PdCards from './products'
 // import Product from "./prdetails";
@@ -9,6 +9,7 @@ import {BrowserRouter as Router , Link , Route, Switch} from 'react-router-dom'
 import Loading2 from '../Asset/Loading2';
 import { connect } from 'react-redux';
 import { selectProduct, addToCart } from '../reducers/actions';
+import Newnewpd  from './newnewprpg';
 
 function Allpp (Props) {
   const urlParams = useParams()
@@ -39,7 +40,7 @@ function Allpp (Props) {
         
           alert('api error: خطا في الاتصال بقواعد البيانات')
         })}
-      }, [ loading]);
+      }, []);
       useEffect(() => {
         if(Boolean(urlParams.id != undefined)){
           console.log(urlParams)
@@ -56,7 +57,7 @@ function Allpp (Props) {
         )
 return (
     //  <Router> <Switch>
-    <div>
+    <Fragment>
         <Route exact path="/products/origin">
             {/* <PdCards  products={products}/> */}
             </Route>
@@ -65,10 +66,13 @@ return (
               {/* <Product  products={products} pid={pid} />
               
             </Route> */}
-            <Route  exact path="/products">
-              <InfintLoading products={products} pid={pid} />
+            <Route  exact  path="/products">
+              <InfintLoading fetchingProducts={loading} products={products} pid={pid}  />
+            </Route> 
+            <Route  exact path="/productsnewnew">
+              <Newnewpd  products={products} pid={pid} />
             </Route>
-            </div>
+            </Fragment>
         //     </Switch>
         // </Router>
     )

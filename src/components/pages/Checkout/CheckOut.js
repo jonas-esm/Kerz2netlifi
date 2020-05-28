@@ -59,6 +59,9 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'flex-end',
   },
+  active: {
+    color: '#000',
+  },
   button: {
     marginTop: theme.spacing(3),
     marginLeft: theme.spacing(1),
@@ -156,7 +159,7 @@ function Checkout(Props) {
                   } */}
                   {activeStep === 1 && <Button
                     variant="contained"
-                    color='primary'
+                    color='secondary'
                     onClick={handleNext}
                     disabled={Props.form === null}
                     className={classes.button}

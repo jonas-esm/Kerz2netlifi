@@ -163,8 +163,9 @@ const useStyles = makeStyles((theme: Theme) =>
       
       [theme.breakpoints.down('sm')] :{
       display:'block',
-    background:'rgba(162, 158, 158, 0.2)',
+    background:'#8F4556',
     borderRadius:'8px'
+    , color:'#fff'
     }
     },
     carousel:{
