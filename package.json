@@ -25,10 +25,9 @@
     "react-infinite-scroll-component": "^5.0.4",
     "react-jss": "^10.1.1",
     "react-redux": "^7.2.0",
-    "react-responsive-carousel": "^3.2.7",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.0",
-    "react-simple-image-slider": "^1.0.3",
+    "react-window": "^1.8.5",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0"
   },
