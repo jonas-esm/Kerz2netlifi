@@ -72,7 +72,7 @@ useEffect(() => {
         console.log(found  , barcodeState , size)
 
             }, 1500);  
-}, [selectedProduct])
+}, [urlParams.id])
 const handleClickOpen =() => {
     setOpen(true);
   

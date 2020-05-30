@@ -133,6 +133,17 @@ const InfintLoading = (Props) => {
   
   const useWindowSizes =()=>{
   const [winSize , setWin] = useState([window.innerWidth , window.innerHeight])
+  // useEffect(() => {
+  //   const handleResize=() => {
+  //     setWin(() => [window.innerWidth , window.innerHeight])
+
+  //   }
+  //   window.addEventListener('resize' , handleResize);
+
+  //   return () => {
+  //     window.removeEventListener("resize" , handleResize)
+  //   }
+  // }, [winSize])
   return winSize
   }
   const [windWidht, windHeight] = useWindowSizes()
@@ -171,11 +182,12 @@ const InfintLoading = (Props) => {
       <div
       style={{
         ...style,
-        left: style.left + 10,
+        left: style.right + 10 ,
         top: style.top + 10,
         width: style.width - 10,
         height: style.height - 10,
-        border:'0.5px solid #d36e64'
+        // border:'0.5px solid #d36e64',
+        boxShadow:'rgba(141, 139, 148, 0.35) 0px 0px 25px'
       }}
         key={ind}
      
@@ -185,7 +197,7 @@ const InfintLoading = (Props) => {
         height: "395px",
         display: "inline-block"}}>
         <a href={"/products/pid=" + item.product_id}>
-        <img src={item.imgUrl} style={{width:'97%',margin:'4px'}} /></a>
+        <img src={item.imgUrl} style={{width:'100%',margin:'0px'}} /></a>
         <div style={{padding:'0 10px'}}><p style={{display:'inline',whiteSpace:"nowrap",fontSize:'1.1rem'}}    >
           {item.product_name}
         </p>
@@ -230,7 +242,7 @@ const InfintLoading = (Props) => {
         },areEqual);
   // const classes = useStyles();
   const cardWidth = 320;
-  const cardHeight = 575;
+  const cardHeight = 565;
   const columnCount = Math.floor(windWidht / cardWidth);
   const rowCount = Math.ceil(listItems.length / columnCount);
   if (listItems.length > 1) {
@@ -249,7 +261,7 @@ const InfintLoading = (Props) => {
     className="grid"
     width={windWidht}
     
-    height={windHeight}
+    height={windHeight + 60}
     columnCount={columnCount}
     columnWidth={cardWidth}
     rowCount={rowCount}
