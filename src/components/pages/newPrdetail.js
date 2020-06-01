@@ -149,15 +149,15 @@ const handleSizeChartOpen = (boolean) => setSizeChartOpen(boolean)
       </Dialog>
                <Grid  container item xs={12} lg={6}>
              {/* <Grid container item xs={6}> */}
-               <Grid item xs={7}>
+               <Grid item xs={6}>
                 
                  <img
-                  style={{ maxWidth:'100%', }}
+                  style={{ maxWidth:'100%' }}
                   src={selectedProduct.imgUrl}
                   onClick={handleClickOpen}
                 />
               </Grid>
-              <Grid container item xs={5} style={{ justifyContent:'start',
+              <Grid container item xs={6} style={{ justifyContent:'start',
                                          
                                           alignContent:'start' }} >
               
@@ -167,7 +167,7 @@ const handleSizeChartOpen = (boolean) => setSizeChartOpen(boolean)
                     <Link
                       key={item.product_id}
                       to={"/products/pid=" + item.product_id}
-                      style={{ textDecoration: "none", color: "default" ,display: "inlineBlock"}}
+                      style={{ textDecoration: "none", color: "default" ,display: "inlineBlock" }}
                       onClick={() => setSelectedProduct(item)}
                     >
                       <img src={item.imgUrl} style={{ maxHeight: 100 }} />
