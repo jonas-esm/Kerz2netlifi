@@ -1,74 +1,34 @@
 import React, { useState, useEffect, memo } from "react";
 
-// import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
+import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 import "./home.css";
-// import InfiniteScroll from "react-infinite-scroll-component";
-import {
-  // Card,
-  Button,
-  // CardActions,
-  // Grid,
-  // CardActionArea,
-  // CardMedia,
-  // Typography,
-  // CardContent,
 
-  // Zoom,
-  // Grow,
+import {
+ 
+  Button, Snackbar,
+ 
 } from "@material-ui/core";
 import { FixedSizeGrid as Grid, areEqual } from 'react-window';
 import "./animateClasses.css";
 import { addToCart, selectProduct } from "../reducers/actions";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-// import { slctedProd } from "../reducers/reducers";
+import {Alert} from '@material-ui/lab'
 
 import Loading2 from "../Asset/Loading2";
 
-// const useStyles = makeStyles((theme: Theme) =>
-//   createStyles({
-//     root1: {
-//       backgroundColor: "RGB(255,255,255,0.5)",
-//     },
-//     root: {
-//       minHeight: 350,
-//       margin: "4",
-//       [theme.breakpoints.down("sm")]: {},
-//     },
-//     media: {
-//       height: 300,
-//       [theme.breakpoints.down("xs")]: {
-//         height: 220,
-//       },
-//       display: "flex",
-//       justifyContent: "center",
-//     },
-//     img: {
-//       height: 300,
-//       [theme.breakpoints.down("xs")]: {
-//         height: 220,
-//       },
-//     },
-//     font: { fontFamily: "Tajawal", padding: 0, marginBottom: 0, color: "#333" },
-//     select: {
-//       "&:focus": {
-//         background: "white",
-//       },
-//     },
-//     outlin: {
-//       root: {
-//         color: "red",
-//         background: "red",
-//       },
-//     },
-//     card: {
-//       //  width:'95vw',
-//       //  height:'100%'
-//     },
-//   })
-// );
+const useStyles = makeStyles((theme) => ({
+  alertbox: {
+    // width: '100%',
+    alignItems:'center',
+    '& > * + *': {
+      margin: theme.spacing(1),
+    },
+  },
+}));
 const InfintLoading = (Props) => {
+
   // const [pdProducts , setPdProducts] = useState([])
   const [anchorEl, setAnchoreEl] = useState(4);
   const [size, setSize] = useState("");
@@ -92,7 +52,9 @@ const InfintLoading = (Props) => {
   };
   const handleBuying = (item, q, s) => {
     if (!s) {
-      alert("يرجى اختيار المقاس");
+      // alert("يرجى اختيار المقاس");
+      // return(<Alert severity="error" >يرجى اختيار المقاس</Alert>)
+      handleSizeAlertOpen()
       console.log(s);
     } else {
       Props.addToCart(item, q, s);
@@ -130,9 +92,15 @@ const InfintLoading = (Props) => {
   //       setIsFetching(true);
   //     }, 500);
   //}
-  
+  const [sizeAlert , toggleSizeAlert] =useState(false)
+  const handleSizeAlertOpen = () => toggleSizeAlert(true)
+  const handleSizeAlertClose = (e , reason) => {
+    if (reason === 'clickaway') return ;
+    toggleSizeAlert(false)
+  }  
   const useWindowSizes =()=>{
   const [winSize , setWin] = useState([window.innerWidth , window.innerHeight])
+
   // useEffect(() => {
   //   const handleResize=() => {
   //     setWin(() => [window.innerWidth , window.innerHeight])
@@ -158,27 +126,11 @@ const InfintLoading = (Props) => {
     const ind = columnIndex + rowIndex * columnCount
     const item = 
     showingList[ind]
-    // console.log(ind , item , showingList)
-   { // let ind
-    // windWidht > 500 ?  ind =  columnIndex + (4 *rowIndex ) : ind =  columnIndex + (2 *rowIndex )
-  //   let item 
-  //  Props.products[ind] ? 
-  //    item = Props.products[ind] : item ={barcode: null,
-  //     categori: null,
-  //     color: "لبني",
-  //     imgUrl: "",
-  //     product_id: "5734975",
-  //     product_name: "",
-  //     product_price: null,
-  //     sex: null,
-  //     sizes: ""}
-    // console.log(item,Boolean(item),!!item.product_price , ind)
-  }
-    // let sizeArr = item.sizes.split(",");
+    
     let itemSize = "";
 
     return ( !item ? <div></div> :
-      // showingList  > 2  && (
+      
       <div
       style={{
         ...style,
@@ -240,7 +192,7 @@ const InfintLoading = (Props) => {
     // )
     );
         },areEqual);
-  // const classes = useStyles();
+  const classes = useStyles();
   const cardWidth = 320;
   const cardHeight = 565;
   const columnCount = Math.floor(windWidht / cardWidth);
@@ -256,7 +208,11 @@ const InfintLoading = (Props) => {
       position: "sticky",
       top: "0px",
     }}>
-          
+          <Snackbar open={sizeAlert} autoHideDuration={20000} onClose={handleSizeAlertClose}>
+        <Alert className={classes.alertbox} onClose={handleSizeAlertClose}  severity="error" >
+          يرجى اختيار المقاس
+        </Alert>
+      </Snackbar>
         <Grid 
     className="grid"
     width={windWidht}
@@ -267,15 +223,11 @@ const InfintLoading = (Props) => {
     rowCount={rowCount}
     rowHeight={cardHeight}
     itemData={[listItems, columnCount ]}
-    // columnCount={windWidht <= 500 ? 2 : 4}
-    // columnWidth={windWidht <= 500 ? windWidht/2 : windWidht/4}
+   
     direction="rtl"
     // height={windHeight}
     
-    // rowCount={windWidht <= 500 ? Math.ceil(listItems.length /2) : Math.ceil(listItems.length / 4)}
-    // rowHeight={windHeight /1.8 }
-    // width={windWidht}
-    
+  
   >
     {Cell}
   </Grid>

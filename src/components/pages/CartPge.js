@@ -14,6 +14,7 @@ import {rmFromCart} from '../reducers/actions'
 import {Link} from 'react-router-dom'
 import '../Asset/styles.css'
 import { ShoppingBasketRounded } from "@material-ui/icons";
+import ConfirmDialog from '../confirmDialog'
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
   table: {
@@ -48,7 +49,7 @@ function Cart(Props) {
   //   setitemme({[e.target.name] : e.target.value})}
   // console.log(Props.cartItems[1])
   const classes = useStyles();
-
+  const [confirmOpen , setConfirmOpen] = useState(false)
   return (
     <Box overflow="hidden">
       {/* <Table
@@ -144,10 +145,22 @@ function Cart(Props) {
                     </Typography>
                     <IconButton
                       aria-label="Delete"
-                      onClick={() => Props.rmFromCart(index)}
+                      // onClick={() => Props.rmFromCart(index)}
+                      onClick={() => setConfirmOpen(true)}
+
                     >
                       <DeleteIcon />
                     </IconButton>
+                    {confirmOpen && (<ConfirmDialog
+                title="ازالة منتج"
+                open={confirmOpen}
+                setOpen={setConfirmOpen}
+                onConfirm = {() => Props.rmFromCart(index)}
+                nBtn="تراجع"
+                yBtn="ازالة"
+                >
+                هل تريد ازالة هذا المنتج من السلة؟
+                </ConfirmDialog>)}
                   </React.Fragment>
                 }
               />

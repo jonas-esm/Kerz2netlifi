@@ -119,7 +119,7 @@ const handleSizeChartOpen = (boolean) => setSizeChartOpen(boolean)
         
        
         <img
-                  style={{ width:'120%' }}
+                  style={{ width:'100%', maxWidth:'700px', }}
                   src={selectedProduct.imgUrl}
                   onClick={handleClose}
                 />
@@ -152,13 +152,13 @@ const handleSizeChartOpen = (boolean) => setSizeChartOpen(boolean)
                <Grid item xs={7}>
                 
                  <img
-                  style={{ maxWidth:'200px', }}
+                  style={{ maxWidth:'100%', }}
                   src={selectedProduct.imgUrl}
                   onClick={handleClickOpen}
                 />
               </Grid>
               <Grid container item xs={5} style={{ justifyContent:'start',
-                                          flexDirection:'column',
+                                         
                                           alignContent:'start' }} >
               
                   {/* <Box display="flex"  flexDirection='column'> */}

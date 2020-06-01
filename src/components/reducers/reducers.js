@@ -20,7 +20,7 @@ export function cartReducers(
           product_price: 0,
         },
 
-        quantity: 0,
+        quantity: '',
         size:"",
       },
     ],
@@ -29,12 +29,38 @@ export function cartReducers(
 ) {
   switch (action.type) {
     case ADD_TO_CART: {
-      return {
-        cart: [
-          ...state.cart,
-          { products: action.productInfo, quantity: action.quantity , size: action.size },
-        ],
-      };
+     
+  if (state.cart.findIndex(product => product.products.product_id === action.productInfo.product_id && product.size === action.size) !== -1) {
+    const newCart = state.cart.reduce((cartAcc, product) => {
+      if (product.products.product_id == action.productInfo.product_id && product.size == action.size) {
+        // cartAcc.push({ products:product.products, quantity: product.quantity++ , size:product.size }) // Increment qty
+        cartAcc.push({...product , quantity: product.quantity +1}) // Increment qty
+        // cartAcc.push({ ...product, qty: product.qty++ })
+
+        // cartAcc = [...cartAcc ]>
+      } else {
+        cartAcc.push(product)
+      }
+
+      return cartAcc
+    }, [])
+
+    // return { cart:[...state.cart, cart ]}  
+    return { ...state, cart:[...newCart] }
+  }
+  return { ...state, cart: [...state.cart, { products:action.productInfo,size:action.size, quantity: action.quantity }] }
+     
+     
+     
+     
+      // return {
+ 
+      // cart: [
+      //     ...state.cart,
+      //     { products: action.productInfo, quantity: action.quantity , size: action.size },
+      //   ],
+
+      // };
     }
     case REMOVE_FROM_CART: {
       // return cart.filter((data, i) => i !== action.id);
