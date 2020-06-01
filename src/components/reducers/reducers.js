@@ -34,7 +34,7 @@ export function cartReducers(
     const newCart = state.cart.reduce((cartAcc, product) => {
       if (product.products.product_id == action.productInfo.product_id && product.size == action.size) {
         // cartAcc.push({ products:product.products, quantity: product.quantity++ , size:product.size }) // Increment qty
-        cartAcc.push({...product , quantity: product.quantity +1}) // Increment qty
+        cartAcc.push({...product , quantity: parseInt(product.quantity) +1}) // Increment qty
         // cartAcc.push({ ...product, qty: product.qty++ })
 
         // cartAcc = [...cartAcc ]>
