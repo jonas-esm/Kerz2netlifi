@@ -20,7 +20,7 @@ export function cartReducers(
           product_price: 0,
         },
 
-        quantity: '',
+        quantity: 0,
         size:"",
       },
     ],

@@ -184,7 +184,7 @@ const handleSizeChartOpen = (boolean) => setSizeChartOpen(boolean)
                 <Typography p={2} align="center" variant="h5" color="secondary">
                   {selectedProduct.product_price}.EGP
                 </Typography>
-                <div>
+                
                   {/* <FormControl variant="outlined" style={{maxWidth:'200px',width:'100%', margin: "auto" }}>
                     <InputLabel id="demo-simple-select-outlined-label">
                       الكمية
@@ -201,24 +201,7 @@ const handleSizeChartOpen = (boolean) => setSizeChartOpen(boolean)
                       <MenuItem value={7}>7</MenuItem>
                     </Select>
                   </FormControl> */}
-                   <TextField
-                   style={{maxWidth:'200px',width:'100%', margin: "20px", }}
-              name={`makeq-${selectedProduct.product_id}`}
-              id={`makeq-${selectedProduct.product_id}`}
-              value={quantity}
-              onChange={handleQuantity}
-              select
-              label="الكمية"
-              variant='standard'
-            
-            > <MenuItem value={1}>1</MenuItem>
-            <MenuItem value={2}>2</MenuItem>
-            <MenuItem value={3}>3</MenuItem>
-            <MenuItem value={4}>4</MenuItem>
-            <MenuItem value={5}>5</MenuItem>
-            <MenuItem value={6}>6</MenuItem>
-            <MenuItem value={7}>7</MenuItem></TextField>
-                </div>
+                  
                 <div>
               
                   <TextField
@@ -244,6 +227,25 @@ const handleSizeChartOpen = (boolean) => setSizeChartOpen(boolean)
                       })}
             </TextField>
     
+                </div>
+                <div>
+                   <TextField
+                   style={{maxWidth:'200px',width:'100%', margin: "20px", }}
+              name={`makeq-${selectedProduct.product_id}`}
+              id={`makeq-${selectedProduct.product_id}`}
+              value={quantity}
+              onChange={handleQuantity}
+              select
+              label="الكمية"
+              variant='standard'
+            
+            > <MenuItem value={1}>1</MenuItem>
+            <MenuItem value={2}>2</MenuItem>
+            <MenuItem value={3}>3</MenuItem>
+            <MenuItem value={4}>4</MenuItem>
+            <MenuItem value={5}>5</MenuItem>
+            <MenuItem value={6}>6</MenuItem>
+            <MenuItem value={7}>7</MenuItem></TextField>
                 </div>
                 {/* <Link to="/size-chart" style={{decoration:'none',}}> */}
                   <Button onClick={()=> handleSizeChartOpen(true)} color='primary' >

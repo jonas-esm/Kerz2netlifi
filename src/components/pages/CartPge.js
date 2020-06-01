@@ -204,7 +204,7 @@ const mapStateToProps = state => {
   return {
     cartItems: state.cartReducers.cart,
     total: state.cartReducers.cart.reduce(
-      (tol, item) => tol + (parseInt(item.quantity) * parseInt(item.products.product_price)) ,0
+      (tol, item) =>  tol + (parseInt(item.quantity) * parseInt(item.products.product_price)) ,0
       )
   };
 };
